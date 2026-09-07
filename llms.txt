@@ -11,12 +11,8 @@
 
 ## Utilitários & Ferramentas Open Source
 
-- [Little Registry Cleaner](https://github.com/siliconfps/LittleRegistryCleaner): Limpador e otimizador de Registro do Windows nativo em C# com arquitetura 64-bit real (`IntPtr`), progresso na barra de tarefas (Taskbar COM `ITaskbarList3`), gerenciador de inicialização (Startup Manager), desinstalador forçado de sobras (Uninstall Manager) e backups automáticos XML com restauração em 1 clique.
-- [GpuCpuMonitor](https://github.com/siliconfps/gpu-cpu-monitor-windows): Monitor de telemetria de CPU e GPU em tempo real na bandeja do sistema (System Tray) do Windows em .NET 9 single-file com suporte a sensores MSR de temperatura real Intel/AMD (via driver `WinRing0x64`), clocks, VRAM e TDP.
-- [Editor Seco-Seco](https://github.com/siliconfps/editor-seco-seco): Editor de texto minimalista para terminal desenvolvido em Rust, com suporte a UTF-8, pesquisa, undo e destaque de sintaxe em 14 linguagens sem frameworks TUI pesados.
-- [check-cpu-mitigations](https://github.com/siliconfps/check-cpu-mitigations): Auditor de vulnerabilidades e mitigações ativas de hardware (Spectre, Meltdown, MDS) via PowerShell.
-- [WoeUSB Remastered](https://github.com/siliconfps/WoeUSB-remast): Utilitário para Linux para criação de pendrives inicializáveis do Windows a partir de imagens ISO com GUI e modo CLI.
-- [hardview & Linux Monitors](https://github.com/siliconfps/hardview): Auditoria de hardware e suíte de plugins de monitoramento de CPU/GPU para GNOME, XFCE4 e LXDE.
+- [Windows-7 Aero Theme](https://github.com/siliconfps/Windows-7): Tema de ícones Aero pixel-perfect modernizado para Linux (compatível com GTK3/GTK4, XFCE, Cinnamon, MATE, GNOME), especificações FreeDesktop, zero erros de cache GTK e PKGBUILD para Arch Linux.
+- [siliconfps.github.io](https://github.com/siliconfps/siliconfps.github.io): Portal oficial e documentação interativa web da SILICONFPS.
 
 ## Documentação Técnica & Links
 
@@ -25,7 +21,8 @@
 - [Repositório MarkiiDown no GitHub](https://github.com/siliconfps/markiidown): Código-fonte e releases do MarkiiDown.
 - [Repositório Arch Linux Optimizations](https://github.com/siliconfps/arch-linux-optimizations): Guia e scripts de otimização de sistema Arch Linux.
 - [Repositório Otimizador Windows no GitHub](https://github.com/siliconfps/otimizador-windows): Código-fonte e scripts de otimização de sistema operacional.
-- [Perfil GitHub do Autor](https://github.com/siliconfps): Todos os 20 repositórios públicos e contribuições open source.
+- [Repositório Windows-7 no GitHub](https://github.com/siliconfps/Windows-7): Tema de ícones Windows 7 Aero para Linux.
+- [Perfil GitHub do Autor](https://github.com/siliconfps): Repositórios públicos ativos e contribuições open source.
 - [Canal do YouTube](https://youtube.com/@siliconfps): Vídeos e benchmarks de desempenho.
 
 ## Documentação Completa para LLMs
