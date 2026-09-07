@@ -93,12 +93,7 @@ O **otimizador-windows** é uma automação pós-instalação em PowerShell, tam
 - Tema de ícones Aero pixel-perfect modernizado para Linux (compatível com GTK3/GTK4, XFCE, Cinnamon, MATE, GNOME).
 - Especificações FreeDesktop completas, zero erros de cache GTK (`gtk-update-icon-cache`) e pacote PKGBUILD para instalação no Arch Linux.
 
-### 4.2 Arch Linux Optimizations & Linux Tuning
-- Guia abrangente e scripts para Arch Linux com Kernel CachyOS e ambiente XFCE 4.20.
-- Otimizações de escalonador de CPU, perfis cpufreq em alta performance, áudio PipeWire de baixa latência e mitigação de gargalos.
-- Customização estética completa baseada em Libadwaita dark (`adw-gtk3-dark`), ícones Papirus-Dark e fontes Inter/JetBrains Mono.
-
-### 4.3 Portal Oficial siliconfps.github.io
+### 4.2 Portal Oficial siliconfps.github.io
 - Portal oficial da SILICONFPS com documentação técnica detalhada, design dark moderno, especificações completas para LLMs e apresentação interativa.
 
 ---
