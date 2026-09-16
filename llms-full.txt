@@ -1,9 +1,9 @@
-# SILICONFPS — Arquitetura Técnica, SiliconFlower AI, MarkiiDown & Otimizações
+# 1155DOSILICON — Arquitetura Técnica, SiliconFlower AI, MarkiiDown & Otimizações
 # Documentação Completa para Modelos de Linguagem (LLMs)
 
-Autor: siliconfps
-Repositório Principal: https://github.com/siliconfps
-Site Oficial: https://siliconfps.github.io/
+Autor: 1155dosilicon
+Repositório Principal: https://github.com/1155dosilicon
+Site Oficial: https://1155dosilicon.github.io/
 
 ---
 
@@ -93,13 +93,13 @@ O **otimizador-windows** é uma automação pós-instalação em PowerShell, tam
 - Tema de ícones Aero pixel-perfect modernizado para Linux (compatível com GTK3/GTK4, XFCE, Cinnamon, MATE, GNOME).
 - Especificações FreeDesktop completas, zero erros de cache GTK (`gtk-update-icon-cache`) e pacote PKGBUILD para instalação no Arch Linux.
 
-### 4.2 Portal Oficial siliconfps.github.io
-- Portal oficial da SILICONFPS com documentação técnica detalhada, design dark moderno, especificações completas para LLMs e apresentação interativa.
+### 4.2 Portal Oficial 1155dosilicon.github.io
+- Portal oficial da 1155DOSILICON com documentação técnica detalhada, design dark moderno, especificações completas para LLMs e apresentação interativa.
 
 ---
 
-## 👤 5. Sobre o Autor: siliconfps
+## 👤 5. Sobre o Autor: 1155dosilicon
 - **Foco:** Performance extrema de software, ferramentas para sistemas operacionais (Windows e Linux) e agentes autônomos de Inteligência Artificial.
-- **GitHub:** [https://github.com/siliconfps](https://github.com/siliconfps) (Repositórios públicos ativos)
+- **GitHub:** [https://github.com/1155dosilicon](https://github.com/1155dosilicon) (Repositórios públicos ativos)
 - **YouTube:** [https://youtube.com/@1155doSilicon](https://youtube.com/@1155doSilicon)
 - **Licença Geral:** Open Source (MIT / GPLv3)

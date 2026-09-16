@@ -1,5 +1,5 @@
 # ==============================================================================
-# robots.txt for SILICONFPS (siliconfps.github.io)
+# robots.txt for 1155DOSILICON (1155dosilicon.github.io)
 # ==============================================================================
 
 User-agent: *
@@ -53,5 +53,5 @@ User-agent: meta-externalagent
 Allow: /
 
 # Mapa do Site e Referência para LLMs
-Sitemap: https://siliconfps.github.io/sitemap.xml
-LLM-Reference: https://siliconfps.github.io/llms.txt
+Sitemap: https://1155dosilicon.github.io/sitemap.xml
+LLM-Reference: https://1155dosilicon.github.io/llms.txt
