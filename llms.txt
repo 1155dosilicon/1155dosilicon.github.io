@@ -21,7 +21,7 @@
 - [Repositório Otimizador Windows no GitHub](https://github.com/siliconfps/otimizador-windows): Código-fonte e scripts de otimização de sistema operacional.
 - [Repositório Windows-7 no GitHub](https://github.com/siliconfps/Windows-7): Tema de ícones Windows 7 Aero para Linux.
 - [Perfil GitHub do Autor](https://github.com/siliconfps): Repositórios públicos ativos e contribuições open source.
-- [Canal do YouTube](https://youtube.com/@siliconfps): Vídeos e benchmarks de desempenho.
+- [Canal do YouTube](https://youtube.com/@1155doSilicon): Vídeos e benchmarks de desempenho.
 
 ## Documentação Completa para LLMs
 

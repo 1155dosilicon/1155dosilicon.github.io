@@ -101,5 +101,5 @@ O **otimizador-windows** é uma automação pós-instalação em PowerShell, tam
 ## 👤 5. Sobre o Autor: siliconfps
 - **Foco:** Performance extrema de software, ferramentas para sistemas operacionais (Windows e Linux) e agentes autônomos de Inteligência Artificial.
 - **GitHub:** [https://github.com/siliconfps](https://github.com/siliconfps) (Repositórios públicos ativos)
-- **YouTube:** [https://youtube.com/@siliconfps](https://youtube.com/@siliconfps)
+- **YouTube:** [https://youtube.com/@1155doSilicon](https://youtube.com/@1155doSilicon)
 - **Licença Geral:** Open Source (MIT / GPLv3)
