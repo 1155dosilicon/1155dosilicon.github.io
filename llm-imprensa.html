@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LLMs vs. Imprensa — Estudo de viés político (Brasil, 2026)</title>
+  <meta name="description" content="Estudo preliminar e reprodutível: respostas de 7 LLMs sobre fatos políticos (Brasil, jan–set/2026) são mais ou menos confiáveis que a cobertura da imprensa? Protocolo A/B/C/D, prompts e datasheet abertos.">
+  <meta name="author" content="1155dosilicon">
+  <meta name="theme-color" content="#050907">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://1155dosilicon.github.io/llm-imprensa.html">
+  <link rel="alternate" type="text/plain" href="https://1155dosilicon.github.io/llms.txt" title="Documentação para LLMs">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="1155DOSILICON">
+  <meta property="og:title" content="LLMs vs. Imprensa — Estudo de viés político (Brasil, 2026)">
+  <meta property="og:description" content="Protocolo aberto, 7 modelos reais, condições com e sem busca web. Tese preliminar com disclaimer: não ataca a imprensa.">
+  <meta property="og:url" content="https://1155dosilicon.github.io/llm-imprensa.html">
+  <meta property="og:image" content="https://1155dosilicon.github.io/avatarupscaled-v2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LLMs vs. Imprensa — Estudo de viés político (Brasil, 2026)">
+  <meta name="twitter:description" content="Estudo preliminar reprodutível: LLMs, busca web e cobertura da imprensa. Protocolo e prompts abertos no GitHub.">
+  <meta name="twitter:image" content="https://1155dosilicon.github.io/avatarupscaled-v2.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "LLMs vs. Imprensa: estudo de caso sobre viés político (Brasil, jan–set/2026)",
+    "author": { "@type": "Person", "name": "1155dosilicon", "url": "https://github.com/1155dosilicon" },
+    "datePublished": "2026-09-18",
+    "inLanguage": "pt-BR",
+    "url": "https://1155dosilicon.github.io/llm-imprensa.html",
+    "codeRepository": "https://github.com/1155dosilicon/llm-imprensa-2026",
+    "about": ["large language models", "media bias", "reproducibility", "Brazilian politics"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050806; --surface: #08100c; --surface-2: #0b1510;
+      --ink: #f0f7f2; --muted: #8ca096; --muted-2: #5d7066;
+      --green: #67f58a; --cyan: #65dfe2; --amber: #ffc967;
+      --line: rgba(118,255,160,.14); --line-strong: rgba(118,255,160,.32);
+      --mono: "IBM Plex Mono", Consolas, monospace;
+      --sans: Inter, system-ui, sans-serif;
+      --max: 1080px; --radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--bg); font-family: var(--sans); overflow-x: hidden; }
+    a { color: inherit; }
+    code, pre, .mono { font-family: var(--mono); }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .nav-shell { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); background: rgba(5,8,6,.85); backdrop-filter: blur(16px); }
+    .nav { min-height: 66px; display: flex; align-items: center; gap: 24px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 600 14px var(--mono); }
+    .logo-mark { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid var(--line-strong); border-radius: 9px; color: var(--green); }
+    .logo-word span { color: var(--green); }
+    .nav-links { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font: 500 11px var(--mono); }
+    .nav-links a:hover { color: var(--green); }
+    .menu { display: none; margin-left: auto; width: 42px; height: 42px; color: var(--green); border: 1px solid var(--line); border-radius: 9px; background: transparent; font: 600 18px var(--mono); cursor: pointer; }
+    .hero { padding: 72px 0 48px; border-bottom: 1px solid var(--line); }
+    .kicker { display: inline-flex; align-items: center; gap: 9px; color: var(--green); font: 600 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 14px 0 0; font-size: clamp(2.4rem, 5.5vw, 4.4rem); line-height: 1; letter-spacing: -.055em; }
+    h1 span { color: var(--green); }
+    .hero-copy { max-width: 760px; color: #b8c8bd; line-height: 1.75; }
+    .hero-copy strong { color: var(--ink); }
+    .disclaimer { margin-top: 18px; max-width: 760px; padding: 14px 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: rgba(103,245,138,.05); color: #cfe3d4; font-size: .92rem; line-height: 1.65; }
+    .meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 28px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--line); }
+    .meta-grid div { padding: 14px 16px; background: var(--surface); }
+    .meta-grid strong { display: block; font: 600 11px var(--mono); color: var(--green); margin-bottom: 6px; }
+    .meta-grid span { font-size: .88rem; color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .button { display: inline-flex; align-items: center; min-height: 46px; padding: 0 18px; border: 1px solid var(--line-strong); border-radius: 10px; text-decoration: none; font: 600 12px var(--mono); }
+    .button.primary { color: #031007; background: var(--green); border-color: var(--green); }
+    .button.secondary { color: var(--ink); background: rgba(5,8,6,.5); }
+    .section { padding: 52px 0; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0 0 12px; font-size: clamp(1.6rem, 3.4vw, 2.6rem); letter-spacing: -.04em; }
+    .lead { max-width: 760px; color: var(--muted); line-height: 1.7; }
+    .card { margin-top: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 22px; }
+    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--green); font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+    td code { color: var(--cyan); font-size: .82rem; }
+    ol, ul { color: #c2d2c7; line-height: 1.75; }
+    pre { overflow-x: auto; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: #040805; font-size: .8rem; line-height: 1.7; color: #b8c8bd; }
+    .tag { display: inline-block; padding: 3px 9px; margin: 2px 4px 2px 0; border: 1px solid var(--line); border-radius: 999px; font: 500 10px var(--mono); color: var(--muted); }
+    .warn { color: var(--amber); }
+    footer { padding: 28px 0 40px; color: var(--muted-2); font: 500 11px var(--mono); }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+    .footer-links { display: flex; gap: 16px; }
+    .footer-links a { color: var(--muted); text-decoration: none; }
+    @media (max-width: 860px) {
+      .meta-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; position: absolute; top: 66px; left: 0; right: 0; flex-direction: column; align-items: flex-start; padding: 16px 20px 20px; background: #060c08; border-bottom: 1px solid var(--line); }
+      .menu { display: block; }
+      table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-shell">
+    <nav class="nav wrap" aria-label="Navegação">
+      <a class="logo" href="index.html"><span class="logo-mark">&gt;_</span><span class="logo-word">1155DO<span>SILICON</span></span></a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="nav-links">≡</button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html#projetos">./projetos</a>
+        <a href="#metodologia">./metodo</a>
+        <a href="#modelos">./modelos</a>
+        <a href="#reproduzir">./reproduzir</a>
+        <a href="https://github.com/1155dosilicon/llm-imprensa-2026" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap">
+      <span class="kicker">Estudo preliminar · v0.1.0 · 18/09/2026</span>
+      <h1>LLMs vs. Imprensa<span>.</span></h1>
+      <p class="hero-copy">Estudo de caso sobre <strong>viés político (Brasil, jan–set/2026)</strong>: respostas de LLMs sobre fatos políticos específicos de 2026 são mais ou menos confiáveis que a cobertura da imprensa? Tese preliminar do autor: <strong>nos testes realizados, os LLMs se mostraram menos enviesados que os veículos analisados — desde que com busca na web para dados novos</strong>. Leia com cautela: amostra pequena, sem estatística formal, protocolo aberto para replicação.</p>
+      <p class="disclaimer"><strong>Disclaimer:</strong> este estudo não ataca nem descredibiliza a imprensa tradicional. É uma defesa da necessidade de testar modelos cada vez mais capazes em vez de especular sobre eles. A pergunta jurídica (patrocínio/incentivo para matéria tendenciosa) é tratada como <strong>pergunta aberta</strong>, não como conclusão.</p>
+      <div class="meta-grid">
+        <div><strong>PERÍODO</strong><span>01/01/2026 – 18/09/2026</span></div>
+        <div><strong>STATUS</strong><span>Preliminar, reprodutível</span></div>
+        <div><strong>AUTOR</strong><span>1155dosilicon</span></div>
+        <div><strong>REUSO</strong><span>Replicação livre com atribuição</span></div>
+      </div>
+      <div class="actions">
+        <a class="button primary" href="https://github.com/1155dosilicon/llm-imprensa-2026" target="_blank" rel="noopener">Abrir repositório ↗</a>
+        <a class="button secondary" href="index.html">← Voltar ao site</a>
+      </div>
+    </section>
+
+    <section class="section wrap" id="pergunta">
+      <span class="kicker">01 / pergunta</span>
+      <h2>A pergunta de pesquisa.</h2>
+      <p class="lead">A imprensa, como meio de comunicação, pode por lei ser patrocinada ou receber algum incentivo para produzir matéria tendenciosa? E, nesse contexto, respostas de LLMs sobre fatos políticos específicos de 2026 são mais ou menos confiáveis que a cobertura da imprensa?</p>
+      <div class="card">
+        <p class="lead" style="margin:0">Recorte: <strong>Brasil, jan–set/2026</strong>. Veículos excluídos pelo autor do corpus (decisão metodológica, ver limitações): Mídia Ninja, Catraca Livre, O Antagonista, Brasil 247 — motivo declarado: financiamento público/político presumido e/ou viés explícito. Fontes de vídeo de referência inicial: canal associado a “Metrópole / MBL”, BandNews FM, Record News, GloboNews.</p>
+      </div>
+    </section>
+
+    <section class="section wrap" id="metodologia">
+      <span class="kicker">02 / protocolo</span>
+      <h2>Metodologia A/B/C/D.</h2>
+      <p class="lead">Qualquer pessoa com acesso às APIs consegue repetir o essencial. Fixe ID exato do modelo + data + parâmetros e publique os brutos antes de agregar.</p>
+      <div class="card" style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Condição</th><th>Código</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td>Harness do autor</td><td><code>A</code></td><td>8 repetições por modelo × pergunta, no ambiente usual do autor</td></tr>
+            <tr><td>API limpa</td><td><code>B</code></td><td>Chamada REST/HTTPS direta em Python, sem system prompt custom, sem tools, sem web</td></tr>
+            <tr><td>API + web</td><td><code>C</code></td><td>Condição B + busca web irrestrita (Brave/Google/Meta via API ou MCP), sem scraper dedicado</td></tr>
+            <tr><td>Prompt sujo</td><td><code>D</code></td><td>Controle negativo: mesmo fato com enquadramento forçadamente enviesado</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <span class="tag">8 repetições / célula</span><span class="tag">temperature 0.0–0.2 em B</span><span class="tag">texto integral publicado</span><span class="tag">datasheet por execução</span>
+        <p class="lead">Classificação por resposta: <code>responde | recusa-parcial | recusa-total | fora-do-tópico | enviesada-a | enviesada-b | equilibrada | devolve-pergunta</code>.</p>
+      </div>
+    </section>
+
+    <section class="section wrap" id="modelos">
+      <span class="kicker">03 / modelos</span>
+      <h2>7 modelos reais, verificados.</h2>
+      <p class="lead">Existência e IDs confirmados em 18/09/2026 via catálogo público da API do OpenRouter. Ao replicar, use exatamente estes IDs.</p>
+      <div class="card" style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Modelo</th><th>ID OpenRouter</th><th>Fornecedor</th></tr></thead>
+          <tbody>
+            <tr><td>Muse Spark 1.3</td><td><code>meta/muse-spark-1.3</code></td><td>Meta</td></tr>
+            <tr><td>Muse Spark 1.1</td><td><code>meta/muse-spark-1.1</code></td><td>Meta</td></tr>
+            <tr><td>GPT-5.6 Sol (ChatGPT)</td><td><code>openai/gpt-5.6-sol</code></td><td>OpenAI</td></tr>
+            <tr><td>Claude Opus 4.8</td><td><code>anthropic/claude-opus-4.8</code></td><td>Anthropic</td></tr>
+            <tr><td>DeepSeek V4.1 Flash</td><td><code>deepseek/deepseek-v4.1-flash</code></td><td>DeepSeek</td></tr>
+            <tr><td>HY3 Preview</td><td><code>tencent/hy3-preview</code></td><td>Tencent</td></tr>
+            <tr><td>Gemini 3.8 Flash</td><td><code>google/gemini-3.8-flash</code></td><td>Google</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section wrap" id="achados">
+      <span class="kicker">04 / achados preliminares</span>
+      <h2>O que foi observado.</h2>
+      <p class="lead">Diário de bordo estruturado, não laudo. Nenhum número abaixo vem de planilha publicada — o datasheet integral é trabalho futuro.</p>
+      <div class="card">
+        <ol>
+          <li><strong>Sem roubo direcional observado</strong> nas condições limpas: nenhum modelo favoreceu sistematicamente um grupo ou político.</li>
+          <li><strong>Recusa seletiva:</strong> Muse, ChatGPT, Claude e Gemini recusaram com mais frequência opinar sobre pessoas; quando responderam, encerraram com devolução socrática (“o que acha disso?”).</li>
+          <li><strong>Modelos chineses</strong> não opinaram, mas algumas respostas saíram do tópico — hipótese aberta (filtro, inferência ou limite paramétrico).</li>
+          <li><strong>Prompts sujos contaminam:</strong> o único desvio visível veio do prompt enviesado, não de viés espontâneo do modelo.</li>
+          <li><strong>Web muda o jogo:</strong> com busca irrestrita, nenhum modelo performou negativamente a ponto de sustentar “A é superior a B”. Sem dados novos, o modelo depende do corte de conhecimento.</li>
+          <li><strong>Hipótese do autor:</strong> na estrutura humana há pontos onde o rumo pode ser decidido direcionalmente; nos modelos testados isso não foi observado nas condições limpas.</li>
+        </ol>
+        <p class="lead"><span class="warn">Limitações:</span> n pequeno, sem juízes cegos independentes, sem conjunto fixo de fatos publicado, sem separação API × app. Ver <a href="https://github.com/1155dosilicon/llm-imprensa-2026/blob/main/LIMITACOES-E-ETICA.md" target="_blank" rel="noopener">LIMITACOES-E-ETICA.md</a>.</p>
+      </div>
+    </section>
+
+    <section class="section wrap" id="reproduzir">
+      <span class="kicker">05 / reprodução em 5 minutos</span>
+      <h2>Rode você mesmo.</h2>
+      <div class="card">
+<pre># 1. Leia o protocolo
+cat METODOLOGIA.md
+
+# 2. Pegue um prompt neutro
+cat prompts/01-neutro-noticia.md
+
+# 3. Rode a chamada limpa (edite URL/chave do provedor)
+python3 scripts/exemplo_chamada_limpa.py
+
+# 4. Registre no datasheet (uma linha por execução)</pre>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/1155dosilicon/llm-imprensa-2026" target="_blank" rel="noopener">Ver prompts e script ↗</a>
+          <a class="button secondary" href="https://github.com/1155dosilicon/llm-imprensa-2026/blob/main/DATASHEET.md" target="_blank" rel="noopener">Esquema do datasheet</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="arquivos">
+      <span class="kicker">06 / mapa do repositório</span>
+      <h2>O que ler primeiro.</h2>
+      <div class="card">
+        <ul>
+          <li><a href="https://github.com/1155dosilicon/llm-imprensa-2026/blob/main/README.md" target="_blank" rel="noopener">README</a> — tese, escopo, achados</li>
+          <li><a href="https://github.com/1155dosilicon/llm-imprensa-2026/blob/main/METODOLOGIA.md" target="_blank" rel="noopener">METODOLOGIA</a> — protocolo A/B/C/D</li>
+          <li><a href="https://github.com/1155dosilicon/llm-imprensa-2026/blob/main/CASOS.md" target="_blank" rel="noopener">CASOS</a> — neutro × sujo × web × opinião</li>
+          <li><a href="https://github.com/1155dosilicon/llm-imprensa-2026/blob/main/RESULTADOS.md" target="_blank" rel="noopener">RESULTADOS</a> — grade por modelo</li>
+          <li><a href="https://github.com/1155dosilicon/llm-imprensa-2026/blob/main/REFERENCIAS.md" target="_blank" rel="noopener">REFERENCIAS</a> — fontes jornalísticas, jurídicas e literatura de viés</li>
+        </ul>
+        <p class="lead">Citação sugerida: 1155dosilicon (2026). <em>LLMs vs. Imprensa: estudo de caso sobre viés político (Brasil, jan–set/2026)</em>, v0.1.0 preliminar. Reuso liberado para replicação com atribuição.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner wrap">
+      <span>LLM-Imprensa v0.1.0 · por 1155dosilicon · estudo preliminar</span>
+      <div class="footer-links"><a href="https://github.com/1155dosilicon/llm-imprensa-2026" target="_blank" rel="noopener">GitHub</a><a href="llms.txt">llms.txt</a><a href="index.html">1155DOSILICON</a><a href="#main">↑ topo</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu');
+    const navLinks = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? '×' : '≡';
+    });
+  </script>
+</body>
+</html>

@@ -8,6 +8,7 @@
 2. [MarkiiDown](https://github.com/1155dosilicon/markiidown): Leitor de Markdown (.md) 100% Standalone, leve e offline em TypeScript com Bun. Conta com TUI Pager interativo de navegação suave no terminal, busca em tempo real (`/`), sumário navegável TOC (`t`), modo monitoramento contínuo (`--watch`), exportação estática HTML e instalador Windows sem privilégios de administrador em `%LOCALAPPDATA%` integrado ao menu de contexto do Windows Explorer ("Abrir com MarkiiDown").
 3. [Otimizador Windows](https://github.com/1155dosilicon/otimizador-windows): Automação pós-instalação em PowerShell, também disponível como `.exe`, com 19 ajustes de desempenho e privacidade para Windows 10 e 11. Alterações sensíveis, como desativar mitigações de CPU, são documentadas com avisos e formas de reversão.
 4. [Windows-7 Aero Theme](https://github.com/1155dosilicon/Windows-7): Tema de ícones Aero pixel-perfect modernizado para Linux (compatível com GTK3/GTK4, XFCE, Cinnamon, MATE, GNOME), especificações FreeDesktop, zero erros de cache GTK e PKGBUILD para Arch Linux.
+5. [LLMs vs. Imprensa — Estudo](https://1155dosilicon.github.io/llm-imprensa.html): Estudo preliminar reprodutível sobre viés político (Brasil, jan–set/2026). Tese preliminar: LLMs menos enviesados que os veículos analisados quando com busca web. Protocolo A/B/C/D, 7 modelos reais via OpenRouter, prompts e datasheet abertos em https://github.com/1155dosilicon/llm-imprensa-2026. Status v0.1.0, sem estatística formal, com disclaimer neutro.
 
 ## Utilitários & Ferramentas Open Source
 
@@ -16,6 +17,8 @@
 ## Documentação Técnica & Links
 
 - [SiliconFlower Live Deck & Demonstração](https://1155dosilicon.github.io/siliconflower.html): Demonstração interativa, arquitetura técnica e apresentação do agente SiliconFlower.
+- [LLMs vs. Imprensa — Apresentação](https://1155dosilicon.github.io/llm-imprensa.html): Página do estudo com pergunta, metodologia, modelos, achados e reprodução em 5 minutos.
+- [Repositório LLMs vs. Imprensa no GitHub](https://github.com/1155dosilicon/llm-imprensa-2026): Protocolo, casos, referências, prompts e script de chamada limpa.
 - [Repositório SiliconFlower no GitHub](https://github.com/1155dosilicon/siliconflower): Código-fonte oficial do SiliconFlower.
 - [Repositório MarkiiDown no GitHub](https://github.com/1155dosilicon/markiidown): Código-fonte e releases do MarkiiDown.
 - [Repositório Otimizador Windows no GitHub](https://github.com/1155dosilicon/otimizador-windows): Código-fonte e scripts de otimização de sistema operacional.
