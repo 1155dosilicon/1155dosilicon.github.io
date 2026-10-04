@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LLMs vs. Imprensa — Estudo de viés político (Brasil, 2026)</title>
-  <meta name="description" content="Estudo preliminar e reprodutível: respostas de 7 LLMs sobre fatos políticos (Brasil, jan–set/2026) são mais ou menos confiáveis que a cobertura da imprensa? Protocolo A/B/C/D, prompts e datasheet abertos.">
+  <meta name="description" content="Estudo preliminar e reprodutível: respostas de 7 LLMs sobre fatos políticos (Brasil, jan–out/2026) são mais ou menos confiáveis que a cobertura da imprensa? Protocolo A/B/C/D, prompts e datasheet abertos. v0.1.0 arquivada em 03/10/2026.">
   <meta name="author" content="1155dosilicon">
   <meta name="theme-color" content="#050907">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -25,9 +25,10 @@
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
-    "headline": "LLMs vs. Imprensa: estudo de caso sobre viés político (Brasil, jan–set/2026)",
+    "headline": "LLMs vs. Imprensa: estudo de caso sobre viés político (Brasil, jan–out/2026)",
     "author": { "@type": "Person", "name": "1155dosilicon", "url": "https://github.com/1155dosilicon" },
     "datePublished": "2026-09-18",
+    "dateModified": "2026-10-03",
     "inLanguage": "pt-BR",
     "url": "https://1155dosilicon.github.io/llm-imprensa.html",
     "codeRepository": "https://github.com/1155dosilicon/llm-imprensa-2026",
@@ -119,13 +120,13 @@
 
   <main id="main">
     <section class="hero wrap">
-      <span class="kicker">Estudo preliminar · v0.1.0 · 18/09/2026</span>
+      <span class="kicker">Estudo preliminar · v0.1.0 · 03/10/2026 — versão final arquivada</span>
       <h1>LLMs vs. Imprensa<span>.</span></h1>
-      <p class="hero-copy">Estudo de caso sobre <strong>viés político (Brasil, jan–set/2026)</strong>: respostas de LLMs sobre fatos políticos específicos de 2026 são mais ou menos confiáveis que a cobertura da imprensa? Tese preliminar do autor: <strong>nos testes realizados, os LLMs se mostraram menos enviesados que os veículos analisados — desde que com busca na web para dados novos</strong>. Leia com cautela: amostra pequena, sem estatística formal, protocolo aberto para replicação.</p>
-      <p class="disclaimer"><strong>Disclaimer:</strong> este estudo não ataca nem descredibiliza a imprensa tradicional. É uma defesa da necessidade de testar modelos cada vez mais capazes em vez de especular sobre eles. A pergunta jurídica (patrocínio/incentivo para matéria tendenciosa) é tratada como <strong>pergunta aberta</strong>, não como conclusão.</p>
+      <p class="hero-copy">Estudo de caso sobre <strong>viés político (Brasil, jan–out/2026, até 03/10/2026 — véspera do 1º turno)</strong>: respostas de LLMs sobre fatos políticos específicos de 2026 são mais ou menos confiáveis que a cobertura da imprensa? Tese preliminar do autor: <strong>nos testes realizados, os LLMs se mostraram menos enviesados que os veículos analisados — desde que com busca na web para dados novos</strong>. Leia com cautela: amostra pequena, sem estatística formal, protocolo aberto para replicação. <strong>Estudo encerrado em 03/10/2026 — arquivado, sem novas alterações previstas.</strong></p>
+      <p class="disclaimer"><strong>Disclaimer:</strong> este estudo não ataca nem descredibiliza a imprensa tradicional. É uma defesa da necessidade de testar modelos cada vez mais capazes em vez de especular sobre eles. A pergunta jurídica (patrocínio/incentivo para matéria tendenciosa) é tratada como <strong>pergunta aberta</strong>, não como conclusão. <strong>Versão v0.1.0 arquivada em 03/10/2026 (véspera do 1º turno de 04/10/2026); 2º turno, se houver, em 25/10/2026, fora do escopo.</strong></p>
       <div class="meta-grid">
-        <div><strong>PERÍODO</strong><span>01/01/2026 – 18/09/2026</span></div>
-        <div><strong>STATUS</strong><span>Preliminar, reprodutível</span></div>
+        <div><strong>PERÍODO</strong><span>01/01/2026 – 03/10/2026</span></div>
+        <div><strong>STATUS</strong><span>Preliminar / Arquivado — 03/10/2026</span></div>
         <div><strong>AUTOR</strong><span>1155dosilicon</span></div>
         <div><strong>REUSO</strong><span>Replicação livre com atribuição</span></div>
       </div>
@@ -140,7 +141,7 @@
       <h2>A pergunta de pesquisa.</h2>
       <p class="lead">A imprensa, como meio de comunicação, pode por lei ser patrocinada ou receber algum incentivo para produzir matéria tendenciosa? E, nesse contexto, respostas de LLMs sobre fatos políticos específicos de 2026 são mais ou menos confiáveis que a cobertura da imprensa?</p>
       <div class="card">
-        <p class="lead" style="margin:0">Recorte: <strong>Brasil, jan–set/2026</strong>. Veículos excluídos pelo autor do corpus (decisão metodológica, ver limitações): Mídia Ninja, Catraca Livre, O Antagonista, Brasil 247 — motivo declarado: financiamento público/político presumido e/ou viés explícito. Fontes de vídeo de referência inicial: canal associado a “Metrópole / MBL”, BandNews FM, Record News, GloboNews.</p>
+        <p class="lead" style="margin:0">Recorte final: <strong>Brasil, jan–out/2026 (até 03/10/2026)</strong>. Veículos excluídos pelo autor do corpus (decisão metodológica, ver limitações): Mídia Ninja, Catraca Livre, O Antagonista, Brasil 247 — motivo declarado: financiamento público/político presumido e/ou viés explícito. Fontes de vídeo de referência inicial: canal associado a “Metrópole / MBL”, BandNews FM, Record News, GloboNews.</p>
       </div>
     </section>
 
@@ -168,7 +169,7 @@
     <section class="section wrap" id="modelos">
       <span class="kicker">03 / modelos</span>
       <h2>7 modelos reais, verificados.</h2>
-      <p class="lead">Existência e IDs confirmados em 18/09/2026 via catálogo público da API do OpenRouter. Ao replicar, use exatamente estes IDs.</p>
+      <p class="lead">Existência e IDs confirmados em 03/10/2026 via catálogo público da API do OpenRouter. Ao replicar, use exatamente estes IDs. Recorte encerrado na véspera do 1º turno — sem revalidação após esta data.</p>
       <div class="card" style="overflow-x:auto">
         <table>
           <thead><tr><th>Modelo</th><th>ID OpenRouter</th><th>Fornecedor</th></tr></thead>
@@ -188,7 +189,7 @@
     <section class="section wrap" id="achados">
       <span class="kicker">04 / achados preliminares</span>
       <h2>O que foi observado.</h2>
-      <p class="lead">Diário de bordo estruturado, não laudo. Nenhum número abaixo vem de planilha publicada — o datasheet integral é trabalho futuro.</p>
+      <p class="lead">Diário de bordo estruturado, não laudo. Nenhum número abaixo vem de planilha publicada — o datasheet integral foi encerrado junto com o recorte em 03/10/2026. Versão final arquivada, sem atualizações futuras.</p>
       <div class="card">
         <ol>
           <li><strong>Sem roubo direcional observado</strong> nas condições limpas: nenhum modelo favoreceu sistematicamente um grupo ou político.</li>
@@ -234,14 +235,14 @@ python3 scripts/exemplo_chamada_limpa.py
           <li><a href="https://github.com/1155dosilicon/llm-imprensa-2026/blob/main/RESULTADOS.md" target="_blank" rel="noopener">RESULTADOS</a> — grade por modelo</li>
           <li><a href="https://github.com/1155dosilicon/llm-imprensa-2026/blob/main/REFERENCIAS.md" target="_blank" rel="noopener">REFERENCIAS</a> — fontes jornalísticas, jurídicas e literatura de viés</li>
         </ul>
-        <p class="lead">Citação sugerida: 1155dosilicon (2026). <em>LLMs vs. Imprensa: estudo de caso sobre viés político (Brasil, jan–set/2026)</em>, v0.1.0 preliminar. Reuso liberado para replicação com atribuição.</p>
+        <p class="lead">Citação sugerida: 1155dosilicon (2026). <em>LLMs vs. Imprensa: estudo de caso sobre viés político (Brasil, jan–out/2026)</em>, v0.1.0 (03/10/2026) – versão final arquivada. Reuso liberado para replicação com atribuição.</p>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="footer-inner wrap">
-      <span>LLM-Imprensa v0.1.0 · por 1155dosilicon · estudo preliminar</span>
+      <span>LLM-Imprensa v0.1.0 · por 1155dosilicon · estudo preliminar arquivado em 03/10/2026</span>
       <div class="footer-links"><a href="https://github.com/1155dosilicon/llm-imprensa-2026" target="_blank" rel="noopener">GitHub</a><a href="llms.txt">llms.txt</a><a href="index.html">1155DOSILICON</a><a href="#main">↑ topo</a></div>
     </div>
   </footer>
