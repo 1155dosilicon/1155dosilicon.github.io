@@ -89,11 +89,7 @@ O **otimizador-windows** é uma automação pós-instalação em PowerShell, tam
 
 ## 🛠️ 4. Utilitários & Ferramentas Open Source
 
-### 4.1 Windows-7 Aero Icon Theme
-- Tema de ícones Aero pixel-perfect modernizado para Linux (compatível com GTK3/GTK4, XFCE, Cinnamon, MATE, GNOME).
-- Especificações FreeDesktop completas, zero erros de cache GTK (`gtk-update-icon-cache`) e pacote PKGBUILD para instalação no Arch Linux.
-
-### 4.2 Portal Oficial 1155dosilicon.github.io
+### 4.1 Portal Oficial 1155dosilicon.github.io
 - Portal oficial da 1155DOSILICON com documentação técnica detalhada, design dark moderno, especificações completas para LLMs e apresentação interativa.
 
 ---
