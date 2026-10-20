@@ -6,7 +6,7 @@
   <title>SiliconFlower — Harness profissional de agentes de IA</title>
   <meta name="description" content="Harness CLI/TUI para engenharia de software com 34 ferramentas nativas, subagentes, memória persistente, Git worktrees, RepoMap e protocolo MCP.">
   <meta name="author" content="1155dosilicon">
-  <meta name="theme-color" content="#050907">
+  <meta name="theme-color" content="#151513">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://1155dosilicon.github.io/siliconflower.html">
   <link rel="alternate" type="text/plain" href="https://1155dosilicon.github.io/llms.txt" title="Documentação para LLMs">
@@ -353,6 +353,142 @@
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
     }
+    /* Visual refresh: editorial typography, quieter surfaces and restrained product accents. */
+    :root {
+      --bg: #151513;
+      --surface: #1c1c19;
+      --surface-2: #242420;
+      --surface-3: #2c2c27;
+      --ink: #f1efe8;
+      --muted: #b0ada4;
+      --muted-2: #807d74;
+      --green: #b7c8aa;
+      --green-strong: #d4dfc9;
+      --cyan: #b2c0bc;
+      --violet: #c0b5cb;
+      --amber: #cfb888;
+      --red: #d18a80;
+      --line: rgba(241, 239, 232, .11);
+      --line-strong: rgba(241, 239, 232, .22);
+      --glow: rgba(183, 200, 170, .09);
+    }
+
+    body {
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    body::after, .grid-bg { display: none; }
+    ::selection { color: #161713; background: var(--green); }
+
+    .nav-shell {
+      background: rgba(21, 21, 19, .92);
+      border-color: var(--line);
+    }
+    .logo { font-family: var(--sans); letter-spacing: -.035em; }
+    .logo-mark {
+      color: var(--green);
+      background: rgba(183, 200, 170, .07);
+      box-shadow: none;
+    }
+    .nav-version, .github-button { border-color: var(--line); }
+    .github-button { background: rgba(255, 255, 255, .035); }
+    .nav-links a, .back-link { font-family: var(--sans); font-size: 12px; }
+
+    .hero {
+      padding-top: 86px;
+      background: radial-gradient(ellipse at 78% 25%, rgba(183, 200, 170, .055), transparent 34rem);
+      border-color: var(--line);
+    }
+    .hero::before { border-color: rgba(241, 239, 232, .055); box-shadow: 0 0 0 70px rgba(241,239,232,.009), 0 0 0 140px rgba(241,239,232,.006); }
+    .eyebrow, .kicker, .feature-code, .outcome-index, .arch-index { letter-spacing: .07em; }
+    h1, h2, .actual-copy h2, .control-copy h2, .cta-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      letter-spacing: -.045em;
+    }
+    h1 { line-height: 1.01; }
+    h1 span { color: var(--green); }
+    h2 { line-height: 1.08; }
+    .hero-copy { color: #c1bfb7; }
+    .hero-copy strong { color: var(--ink); }
+    .hero-note { font-family: var(--sans); font-size: 11px; }
+
+    .button, .github-button { border-radius: 8px; font-family: var(--sans); font-size: 12px; }
+    .button.primary {
+      color: #1a1b17;
+      background: #e8e5dc;
+      border-color: #e8e5dc;
+      box-shadow: none;
+    }
+    .button.primary:hover { background: #f2f0e9; border-color: #f2f0e9; }
+    .button.secondary { border-color: var(--line); background: rgba(255,255,255,.035); }
+    .button:hover, .github-button:hover { border-color: var(--green); }
+
+    .product-shell, .console-showcase, .ready-frame {
+      border-color: var(--line-strong);
+      background: #111110;
+      box-shadow: 0 26px 72px rgba(0,0,0,.28);
+    }
+    .product-shell::after { box-shadow: inset 0 0 60px rgba(241,239,232,.012); }
+    .window-bar, .ready-frame-head {
+      color: #aaa79e;
+      background: #1c1c19;
+      border-color: var(--line);
+    }
+    .window-title, .terminal-title { font-family: var(--sans); }
+    .capture-flag {
+      color: #e4e2d9;
+      border-color: rgba(241,239,232,.2);
+      border-radius: 7px;
+      background: rgba(21,21,19,.88);
+    }
+    .capture-flag::before, .window-status::before { box-shadow: none; }
+    .status-bar { background: #191916; border-color: var(--line); }
+
+    .proof { background: #191916; border-color: var(--line); }
+    .proof-item { border-color: var(--line); }
+    .proof-item strong { font-family: var(--sans); font-weight: 600; }
+    .proof-item span { font-family: var(--sans); font-size: 10px; }
+    .section, .section + .section { border-color: var(--line); }
+    .actual-copy p, .lead { color: var(--muted); }
+    .outcome, .feature, .arch-node, .provider {
+      border-color: var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+    .outcome-index { border-color: var(--line); border-radius: 9px; background: rgba(255,255,255,.035); }
+    .project-card::after { display: none; }
+    .feature:hover, .outcome:hover, .provider:hover { border-color: var(--line-strong); }
+    .console-showcase { border-radius: 16px; }
+    .console-grid { background: #191916; }
+    .console-log { background: #151513; border-color: var(--line); }
+    .console-side, .console-panel { background: #191916; border-color: var(--line); }
+    .agent-dot, .agent-dot.waiting { box-shadow: none; }
+    .arch-node.core { border-color: rgba(183,200,170,.38); background: #22231f; box-shadow: none; }
+    .arch-arrow { color: var(--muted-2); }
+    .control-item { border-color: var(--line); }
+    .pill { color: var(--muted); border-color: var(--line); background: rgba(255,255,255,.025); }
+    .providers { border-color: var(--line); border-radius: 14px; }
+    .provider { border-radius: 0; }
+    .install-card { border-color: var(--line-strong); border-radius: 14px; background: #111110; box-shadow: 0 24px 60px rgba(0,0,0,.24); }
+    .install-tabs { background: #1b1b18; border-color: var(--line); }
+    .install-tab, .copy-button { font-family: var(--sans); }
+    .install-tab.active { background: rgba(255,255,255,.045); }
+    .cta-box {
+      border-color: var(--line);
+      border-radius: 18px;
+      background: linear-gradient(135deg, #22231f, #191916 75%);
+    }
+    .cta-box::after { border-color: rgba(241,239,232,.055); box-shadow: 0 0 0 70px rgba(241,239,232,.008), 0 0 0 140px rgba(241,239,232,.005); }
+    footer, .footer-inner { border-color: var(--line); }
+
+    @media (max-width: 760px) {
+      .nav-links { background: rgba(21,21,19,.98); }
+      .hero { padding-top: 72px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -369,10 +505,10 @@
       <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 1155DOSILICON</a>
       <button class="menu" type="button" aria-expanded="false" aria-controls="nav-links">≡</button>
       <div class="nav-links" id="nav-links">
-        <a href="#produto">produto</a>
-        <a href="#recursos">recursos</a>
-        <a href="#arquitetura">arquitetura</a>
-        <a href="#instalar">instalar</a>
+        <a href="#produto">Produto</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#arquitetura">Arquitetura</a>
+        <a href="#instalar">Instalação</a>
         <a class="github-button" href="https://github.com/1155dosilicon/siliconflower" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
@@ -415,7 +551,7 @@
 
     <section class="actual-product wrap" aria-labelledby="real-interface-title">
       <div class="actual-copy reveal">
-        <span class="kicker">REAL INTERFACE / NO MOCKUP</span>
+        <span class="kicker">Interface real</span>
         <h2 id="real-interface-title">Terminal de verdade, sem uma camada escondendo o produto.</h2>
         <p>O estado inicial mostra modelo, reasoning, modo, ferramentas, skills e consumo de tokens antes mesmo da primeira instrução.</p>
       </div>
@@ -427,7 +563,7 @@
 
     <section class="section wrap" id="produto">
       <header class="section-head reveal">
-        <div><span class="kicker">01 / outcomes</span><h2>Do pedido ao código validado.</h2></div>
+        <div><span class="kicker">01 / Visão geral</span><h2>Do pedido ao código validado.</h2></div>
         <p class="lead">Não é apenas uma janela de chat. O harness entende o repositório, escolhe ferramentas, coordena trabalho paralelo e mantém o estado da execução.</p>
       </header>
       <div class="outcomes">
@@ -439,7 +575,7 @@
 
     <section class="section wrap" aria-labelledby="console-title">
       <header class="section-head reveal">
-        <div><span class="kicker">02 / observable execution</span><h2 id="console-title">A execução não fica escondida.</h2></div>
+        <div><span class="kicker">02 / Execução observável</span><h2 id="console-title">A execução não fica escondida.</h2></div>
         <p class="lead">Chamadas de ferramenta, agentes ativos, branch, consumo de contexto e modo de operação permanecem visíveis durante todo o trabalho.</p>
       </header>
       <div class="console-showcase reveal">
@@ -488,7 +624,7 @@
 
     <section class="section wrap" id="recursos">
       <header class="section-head reveal">
-        <div><span class="kicker">03 / capabilities</span><h2>As peças certas, no mesmo loop.</h2></div>
+        <div><span class="kicker">03 / Recursos</span><h2>As peças certas, no mesmo fluxo.</h2></div>
         <p class="lead">Recursos integrados para reduzir troca de contexto e permitir que o agente vá além de gerar trechos de código.</p>
       </header>
       <div class="feature-grid">
@@ -505,7 +641,7 @@
 
     <section class="section wrap" id="arquitetura">
       <header class="section-head reveal">
-        <div><span class="kicker">04 / architecture</span><h2>Um núcleo. Vários modelos. Qualquer ferramenta.</h2></div>
+        <div><span class="kicker">04 / Arquitetura</span><h2>Um núcleo. Vários modelos. Suas ferramentas.</h2></div>
         <p class="lead">A arquitetura separa provedor, orquestração e execução. Você pode trocar o modelo sem reaprender o produto ou refazer seu workflow.</p>
       </header>
       <div class="architecture reveal" role="group" aria-label="Fluxo da arquitetura do SiliconFlower">
@@ -522,7 +658,7 @@
     <section class="section wrap">
       <div class="control-grid">
         <div class="control-copy reveal">
-          <span class="kicker">05 / control plane</span>
+          <span class="kicker">05 / Controle</span>
           <h2>Autonomia com limites explícitos.</h2>
           <p>Você escolhe quanto o agente pode pensar, onde pode atuar e como deve se comportar. Os controles ficam disponíveis durante a sessão, não escondidos em uma configuração distante.</p>
         </div>
@@ -537,7 +673,7 @@
 
     <section class="section wrap" aria-labelledby="providers-title">
       <header class="section-head reveal">
-        <div><span class="kicker">06 / provider agnostic</span><h2 id="providers-title">Escolha o modelo. Mantenha o harness.</h2></div>
+        <div><span class="kicker">06 / Provedores</span><h2 id="providers-title">Escolha o modelo. Mantenha o harness.</h2></div>
         <p class="lead">Use APIs diretas ou catálogos multi-modelo. A configuração centraliza endpoint, credencial, modelo e nível de raciocínio.</p>
       </header>
       <div class="providers reveal">
@@ -551,7 +687,7 @@
     <section class="section wrap" id="instalar">
       <div class="install">
         <div class="install-copy reveal">
-          <span class="kicker">07 / quick start</span>
+          <span class="kicker">07 / Instalação</span>
           <h2>Rode em minutos.</h2>
           <p>Clone o projeto, instale as dependências e inicie. Na primeira execução, o assistente configura provedor, modelo e credencial.</p>
           <div class="requirements"><span class="requirement">Bun 1.3+</span><span class="requirement">Node.js 20+</span><span class="requirement">Windows 10/11</span><span class="requirement">MIT</span></div>
@@ -583,7 +719,7 @@
 
     <section class="cta wrap">
       <div class="cta-box reveal">
-        <span class="kicker">READY / START SESSION</span>
+        <span class="kicker">Comece por aqui</span>
         <h2>Seu próximo agente pode trabalhar dentro do repositório.</h2>
         <p>Explore o código, consulte a documentação e adapte o SiliconFlower ao seu fluxo. O projeto é gratuito, open source e publicado sob licença MIT.</p>
         <div class="actions">
