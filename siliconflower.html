@@ -27,7 +27,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "SiliconFlower",
-    "softwareVersion": "0.2.4",
+    "softwareVersion": "0.2.9",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Windows 10, Windows 11",
     "description": "Harness CLI/TUI para engenharia de software com 34 ferramentas nativas, subagentes, memória persistente, Git worktrees, RepoMap e protocolo MCP.",
@@ -344,6 +344,7 @@
       .providers { grid-template-columns: repeat(2, 1fr); }
       .provider:nth-child(2) { border-right: 0; }
       .provider:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .install-tabs { flex-wrap: wrap; }
       .install-code { font-size: 9.5px; overflow-x: auto; }
       .footer-inner { padding: 22px 0; flex-direction: column; align-items: flex-start; }
     }
@@ -501,13 +502,14 @@
         <span class="logo-mark">🌸</span>
         <span class="logo-word">silicon<span>flower</span></span>
       </a>
-      <span class="nav-version">v0.2.4 · MIT</span>
+      <span class="nav-version">v0.2.9 · MIT</span>
       <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 1155DOSILICON</a>
       <button class="menu" type="button" aria-expanded="false" aria-controls="nav-links">≡</button>
       <div class="nav-links" id="nav-links">
         <a href="#produto">Produto</a>
         <a href="#recursos">Recursos</a>
         <a href="#arquitetura">Arquitetura</a>
+        <a href="#novidades">Novidades</a>
         <a href="#instalar">Instalação</a>
         <a class="github-button" href="https://github.com/1155dosilicon/siliconflower" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
       </div>
@@ -525,7 +527,7 @@
             <a class="button primary" href="https://github.com/1155dosilicon/siliconflower" target="_blank" rel="noopener">Começar no GitHub <span aria-hidden="true">↗</span></a>
             <a class="button secondary" href="#produto">Ver como funciona <span aria-hidden="true">↓</span></a>
           </div>
-          <p class="hero-note">Windows 10/11 · Bun 1.3+ ou Node.js 20+ · licença MIT</p>
+          <p class="hero-note">Windows 10/11 · Bun 1.3+ ou Node.js 20+ · licença MIT · Linux/macOS via <a href="https://github.com/1155dosilicon/siliconflower-nix" target="_blank" rel="noopener">siliconflower-nix</a></p>
         </div>
 
         <section class="product-shell" aria-label="Captura real do SiliconFlower em execução">
@@ -543,7 +545,7 @@
     <div class="proof">
       <div class="proof-grid wrap">
         <div class="proof-item"><strong>34</strong><span>ferramentas nativas</span></div>
-        <div class="proof-item"><strong>4+</strong><span>provedores de modelo</span></div>
+        <div class="proof-item"><strong>OpenAI API</strong><span>qualquer backend compatível</span></div>
         <div class="proof-item"><strong>MCP</strong><span>extensível por protocolo</span></div>
         <div class="proof-item"><strong>1 .exe</strong><span>build standalone</span></div>
       </div>
@@ -595,7 +597,7 @@
             <span class="line indent"><span class="warn">◌ verification</span> suíte de regressão</span>
             <div class="space"></div>
             <span class="line"><span class="label">ISOLATE</span> <span class="path">enter_worktree</span> sf/payment-refactor</span>
-            <span class="line indent"><span class="success">✓</span> workspace isolado em .git/worktrees/…</span>
+            <span class="line indent"><span class="success">✓</span> workspace isolado em .worktrees/sf/payment-refactor</span>
             <div class="space"></div>
             <span class="line"><span class="label">APPLY</span> 4 arquivos alterados · 2 adicionados</span>
             <span class="line indent"><span class="path">apply_patch</span> src/payments/service.ts</span>
@@ -629,9 +631,9 @@
       </header>
       <div class="feature-grid">
         <article class="feature wide reveal"><span class="feature-code">agent.orchestration</span><h3>Subagentes e tarefas em background</h3><p>Delegue papéis de research, plan, coder, verification ou custom. A sessão principal acompanha resultados e continua trabalhando sem bloquear a interface.</p></article>
-        <article class="feature wide reveal"><span class="feature-code">workspace.memory</span><h3>Memória persistente sem poluir o projeto</h3><p>Preferências, regras e contexto ficam isolados por workspace em <code>~/.siliconflower/</code>, fora do repositório e disponíveis em sessões futuras.</p></article>
-        <article class="feature reveal"><span class="feature-code">code.context</span><h3>RepoMap &amp; símbolos</h3><p>Mapeamento estrutural para TypeScript, JavaScript, Python, Go, Rust, C e C++ com uso econômico de contexto.</p></article>
-        <article class="feature reveal"><span class="feature-code">git.isolation</span><h3>Git worktrees</h3><p>Crie ambientes temporários, valide mudanças e encerre a tarefa sem alterar sua branch de trabalho.</p></article>
+        <article class="feature wide reveal"><span class="feature-code">workspace.memory</span><h3>Memória por projeto, fora do repositório</h3><p>Uma pasta vira projeto com <code>SILICONFLOWER.md</code> ou <code>AGENTS.md</code> (<code>siliconflower init</code>). As memórias ficam em <code>~/.siliconflower/workspaces/</code> e só o índice entra no prompt; o conteúdo é lido quando relevante.</p></article>
+        <article class="feature reveal"><span class="feature-code">code.context</span><h3>RepoMap &amp; símbolos</h3><p>Mapeamento estrutural para TypeScript, JavaScript, Python, Go e Rust com uso econômico de contexto.</p></article>
+        <article class="feature reveal"><span class="feature-code">git.isolation</span><h3>Git worktrees</h3><p>Branches temporárias em <code>.worktrees/</code>, excluídas do <code>git status</code>, para validar mudanças sem tocar na sua branch de trabalho.</p></article>
         <article class="feature reveal"><span class="feature-code">protocol.mcp</span><h3>Model Context Protocol</h3><p>Conecte servidores MCP externos e amplie o conjunto de ferramentas sem acoplar integrações ao núcleo.</p></article>
         <article class="feature reveal"><span class="feature-code">lifecycle.hooks</span><h3>Hooks de automação</h3><p>Dispare rotinas em eventos como preTool, postTool, onEdit, onCommand e início ou fim de sessão.</p></article>
         <article class="feature reveal"><span class="feature-code">web.research</span><h3>Pesquisa web</h3><p>Pesquise e consulte documentação durante a execução para trabalhar com informação atual e verificável.</p></article>
@@ -647,7 +649,7 @@
       <div class="architecture reveal" role="group" aria-label="Fluxo da arquitetura do SiliconFlower">
         <div class="arch-node"><span class="arch-index">INPUT</span><div><h3>Você</h3><p>instrução · arquivos · contexto</p></div></div>
         <div class="arch-arrow" aria-hidden="true">→</div>
-        <div class="arch-node"><span class="arch-index">MODELS</span><div><h3>Provider</h3><p>OpenAI · Anthropic · OpenRouter · SiliconFlow</p></div></div>
+        <div class="arch-node"><span class="arch-index">MODELS</span><div><h3>Provider</h3><p>OpenAI · OpenRouter · SiliconFlow · Xiaomi MiMo</p></div></div>
         <div class="arch-arrow" aria-hidden="true">→</div>
         <div class="arch-node core"><span class="arch-index">CORE</span><div><h3>SiliconFlower</h3><p>planning · routing · memory · modes</p></div></div>
         <div class="arch-arrow" aria-hidden="true">→</div>
@@ -663,8 +665,8 @@
           <p>Você escolhe quanto o agente pode pensar, onde pode atuar e como deve se comportar. Os controles ficam disponíveis durante a sessão, não escondidos em uma configuração distante.</p>
         </div>
         <div class="control-list reveal">
-          <article class="control-item"><span>CTRL+E</span><div><h3>Reasoning effort</h3><p>Ajuste a profundidade de raciocínio conforme a complexidade da tarefa e o suporte do provedor.</p><div class="mode-pills"><span class="pill">off</span><span class="pill">low</span><span class="pill">medium</span><span class="pill">high</span></div></div></article>
-          <article class="control-item"><span>CTRL+O</span><div><h3>Modos de operação</h3><p>Alterne entre programação, sistema e plano para adaptar o conjunto de ações permitidas ao tipo de trabalho.</p><div class="mode-pills"><span class="pill">programação</span><span class="pill">sistema</span><span class="pill">plano</span></div></div></article>
+          <article class="control-item"><span>CTRL+E</span><div><h3>Reasoning effort</h3><p>Ajuste a profundidade de raciocínio conforme a tarefa. Na API oficial Xiaomi MiMo, o atalho liga e desliga o pensamento.</p><div class="mode-pills"><span class="pill">none</span><span class="pill">low</span><span class="pill">medium</span><span class="pill">high</span></div></div></article>
+          <article class="control-item"><span>CTRL+O</span><div><h3>Modos de operação</h3><p>Alterne entre programação, sistema e plano. O modo plano aplica uma allowlist de leitura e bloqueia edições, comandos e ferramentas MCP.</p><div class="mode-pills"><span class="pill">programação</span><span class="pill">sistema</span><span class="pill">plano</span></div></div></article>
           <article class="control-item"><span>GIT</span><div><h3>Isolamento reversível</h3><p>Worktrees e branches temporárias mantêm mudanças experimentais separadas até você decidir integrá-las.</p></div></article>
           <article class="control-item"><span>LOGS</span><div><h3>Estado observável</h3><p>Ferramentas, tarefas, saídas truncadas e eventos de sessão ficam organizados em <code>~/.siliconflower/</code>.</p></div></article>
         </div>
@@ -674,28 +676,46 @@
     <section class="section wrap" aria-labelledby="providers-title">
       <header class="section-head reveal">
         <div><span class="kicker">06 / Provedores</span><h2 id="providers-title">Escolha o modelo. Mantenha o harness.</h2></div>
-        <p class="lead">Use APIs diretas ou catálogos multi-modelo. A configuração centraliza endpoint, credencial, modelo e nível de raciocínio.</p>
+        <p class="lead">Um único adaptador compatível com a API da OpenAI. Basta apontar <code>baseURL</code>, chave e modelo — no wizard, no <code>config.json</code> ou por variáveis <code>SILICONFLOWER_*</code>.</p>
       </header>
       <div class="providers reveal">
-        <div class="provider"><span>provider_01</span><strong>OpenAI</strong><small>native</small></div>
-        <div class="provider"><span>provider_02</span><strong>Anthropic</strong><small>native</small></div>
-        <div class="provider"><span>provider_03</span><strong>OpenRouter</strong><small>compatible</small></div>
-        <div class="provider"><span>provider_04</span><strong>SiliconFlow</strong><small>compatible</small></div>
+        <div class="provider"><span>provider_01</span><strong>SiliconFlow</strong><small>padrão</small></div>
+        <div class="provider"><span>provider_02</span><strong>OpenRouter</strong><small>compatível</small></div>
+        <div class="provider"><span>provider_03</span><strong>OpenAI</strong><small>compatível</small></div>
+        <div class="provider"><span>provider_04</span><strong>Xiaomi MiMo</strong><small>thinking on/off</small></div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="novidades">
+      <div class="control-grid">
+        <div class="control-copy reveal">
+          <span class="kicker">07 / Changelog</span>
+          <h2>O que mudou recentemente.</h2>
+          <p>Resumo das últimas versões. O histórico completo está no <a href="https://github.com/1155dosilicon/siliconflower/blob/main/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG.md</a>.</p>
+        </div>
+        <div class="control-list reveal">
+          <article class="control-item"><span>0.2.9</span><div><h3>TUI estável ao redimensionar</h3><p>Logo se adapta à largura da janela e a tela é redesenhada inteira após o resize, sem restos de quadros antigos. Documentação reorganizada em <code>AGENTS.md</code> e <code>docs/ARCHITECTURE.md</code>.</p></div></article>
+          <article class="control-item"><span>0.2.8</span><div><h3>Projetos e memória sob demanda</h3><p>Pastas com <code>SILICONFLOWER.md</code> ou <code>AGENTS.md</code> ativam instruções e memória de projeto. Novo comando <code>siliconflower init</code>.</p></div></article>
+          <article class="control-item"><span>0.2.7</span><div><h3>Mais de 30 correções</h3><p><code>Ctrl+C</code> cancela a resposta, PowerShell em UTF-8 sem carregar o <code>$PROFILE</code>, subagentes sem timeout de 60 s e <code>ask_question</code> pausando na TUI.</p></div></article>
+          <article class="control-item"><span>0.2.6</span><div><h3>Xiaomi MiMo</h3><p>Pensamento ligado/desligado nos endpoints oficiais, no wizard e em <code>Ctrl+E</code>.</p></div></article>
+          <article class="control-item"><span>0.2.5</span><div><h3>Adaptador único</h3><p>Provedor Anthropic removido; todo backend passa pela API compatível com OpenAI. Rolagem nativa com o mouse na TUI.</p></div></article>
+        </div>
       </div>
     </section>
 
     <section class="section wrap" id="instalar">
       <div class="install">
         <div class="install-copy reveal">
-          <span class="kicker">07 / Instalação</span>
+          <span class="kicker">08 / Instalação</span>
           <h2>Rode em minutos.</h2>
           <p>Clone o projeto, instale as dependências e inicie. Na primeira execução, o assistente configura provedor, modelo e credencial.</p>
-          <div class="requirements"><span class="requirement">Bun 1.3+</span><span class="requirement">Node.js 20+</span><span class="requirement">Windows 10/11</span><span class="requirement">MIT</span></div>
+          <div class="requirements"><span class="requirement">Bun 1.3+</span><span class="requirement">Node.js 20+</span><span class="requirement">Windows 10/11</span><span class="requirement">Linux/macOS (nix)</span><span class="requirement">MIT</span></div>
         </div>
         <div class="install-card reveal">
           <div class="install-tabs">
             <button class="install-tab active" type="button" data-tab="source">código-fonte</button>
             <button class="install-tab" type="button" data-tab="binary">build standalone</button>
+            <button class="install-tab" type="button" data-tab="nix">linux / macOS</button>
             <button class="copy-button" type="button">copiar</button>
           </div>
           <pre class="install-code" data-panel="source"><span class="comment"># clone e instale</span>
@@ -713,6 +733,14 @@
 
 <span class="comment"># execute de qualquer pasta</span>
 <span class="command">siliconflower</span></pre>
+          <pre class="install-code" data-panel="nix" hidden><span class="comment"># port multiplataforma (siliconflower-nix)</span>
+<span class="command">git clone https://github.com/1155dosilicon/siliconflower-nix.git</span>
+<span class="command">cd siliconflower-nix</span>
+<span class="command">bun install</span>
+
+<span class="comment"># gera dist/siliconflower e copia para ~/.local/bin</span>
+<span class="command">bun run build</span>
+<span class="command">npm run install:bin</span></pre>
         </div>
       </div>
     </section>
@@ -732,7 +760,7 @@
 
   <footer>
     <div class="footer-inner wrap">
-      <span>SiliconFlower v0.2.4 · feito por 1155dosilicon · MIT</span>
+      <span>SiliconFlower v0.2.9 · feito por 1155dosilicon · MIT</span>
       <div class="footer-links"><a href="https://github.com/1155dosilicon/siliconflower" target="_blank" rel="noopener">GitHub</a><a href="llms-full.txt">spec técnica</a><a href="index.html">1155DOSILICON</a><a href="#top">↑ topo</a></div>
     </div>
   </footer>

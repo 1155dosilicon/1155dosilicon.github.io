@@ -15,7 +15,7 @@ O **SiliconFlower** é um harness CLI/TUI de alta performance para desenvolvimen
 ### 1.2 Principais Capacidades
 1. **Raciocínio Controlável (Reasoning Effort):** Permite alternar a profundidade de reflexão e cadeia de pensamento da IA entre níveis (desativado, baixo, médio, alto).
 2. **Model Context Protocol (MCP):** Integração nativa como cliente MCP via stdio, permitindo conectar servidores de ferramentas externos em tempo de execução.
-3. **Multi-Provedor:** Suporte nativo e unificado para OpenAI, Anthropic, OpenRouter, SiliconFlow e APIs compatíveis.
+3. **Multi-Provedor:** Adaptador único compatível com a API da OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo e demais backends compatíveis). O provedor Anthropic nativo foi removido na v0.2.5.
 4. **Executável Standalone:** Compilado como binário único `.exe` de alta velocidade via Bun / TypeScript.
 5. **Memória Persistente:** Preferências, regras e contexto ficam isolados em `~/.siliconflower/workspaces/<workspace-id>/memory/`, sem criar pastas visíveis dentro do repositório do projeto; memórias globais ficam em `~/.siliconflower/memory/`.
 6. **Subagentes Autônomos:** Criação de sessões isoladas para pesquisa de código, planejamento, codificação ou verificação.
