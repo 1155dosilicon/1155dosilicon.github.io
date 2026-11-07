@@ -7,6 +7,7 @@
   <meta name="description" content="Projetos open source da 1155DOSILICON: SiliconFlower (agente de IA no terminal), MarkiiDown, Otimizador Windows e estudos sobre LLMs.">
   <meta name="author" content="1155dosilicon">
   <meta name="theme-color" content="#151513">
+  <meta name="color-scheme" content="dark">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://1155dosilicon.github.io/">
   <link rel="alternate" type="text/plain" href="https://1155dosilicon.github.io/llms.txt" title="Documentação para LLMs">
@@ -36,169 +37,228 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
+      color-scheme: dark;
       --bg: #151513;
+      --bg-raised: #191916;
       --surface: #1c1c19;
-      --surface-2: #242420;
+      --surface-hover: #21211d;
+      --term: #10100f;
       --ink: #f1efe8;
+      --ink-2: #c9c6be;
       --muted: #b0ada4;
-      --muted-2: #807d74;
+      --muted-2: #8b887f;
       --green: #b7c8aa;
-      --cyan: #b2c0bc;
-      --amber: #cfb888;
-      --red: #d18a80;
+      --green-soft: rgba(183, 200, 170, .1);
       --line: rgba(241, 239, 232, .11);
       --line-strong: rgba(241, 239, 232, .22);
-      --mono: "IBM Plex Mono", "Cascadia Code", Consolas, monospace;
-      --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --serif: Georgia, "Times New Roman", serif;
+      /* Família IBM Plex inteira: serif para títulos, sans para texto, mono para o que é de terminal */
+      --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+      --sans: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "IBM Plex Mono", "Cascadia Code", Consolas, ui-monospace, monospace;
       --max: 1180px;
-      --radius: 14px;
+      --nav-h: 68px;
+      --ease: cubic-bezier(.2, .7, .2, 1);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; color: var(--ink); background: var(--bg); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); scrollbar-color: #3a3a35 var(--bg); }
+    body { margin: 0; color: var(--ink); background: var(--bg); font: 400 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
     ::selection { color: #161713; background: var(--green); }
     a { color: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    img { max-width: 100%; display: block; }
-    code, pre, .mono { font-family: var(--mono); }
-    .skip-link { position: fixed; top: -60px; left: 16px; z-index: 100; padding: 10px 14px; color: #161713; background: var(--green); }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p, dl, dd, figure { margin: 0; }
+    h1, h2, h3 { font-weight: 400; text-wrap: balance; }
+    p, dd { text-wrap: pretty; }
+    code { font-family: var(--mono); }
+    :focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .skip-link { position: fixed; top: -60px; left: 16px; z-index: 100; padding: 10px 14px; border-radius: 8px; color: #161713; background: var(--green); font-weight: 500; text-decoration: none; }
     .skip-link:focus { top: 16px; }
     .shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
 
-    .topbar { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); background: rgba(21, 21, 19, .92); backdrop-filter: blur(18px); }
-    .nav { min-height: 70px; display: flex; align-items: center; gap: 30px; }
+    /* Navegação */
+    .topbar { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); background: rgba(21, 21, 19, .9); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+    .nav { min-height: var(--nav-h); display: flex; align-items: center; gap: 32px; }
     .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font: 600 14px var(--sans); letter-spacing: .02em; }
-    .brand-mark { display: grid; place-items: center; width: 31px; height: 31px; color: var(--green); border: 1px solid var(--line-strong); border-radius: 9px; background: rgba(183, 200, 170, .07); font: 600 12px var(--mono); }
-    .brand span:last-child span { color: var(--green); }
-    .nav-links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font: 500 12px var(--sans); transition: color .2s ease; }
-    .nav-links a:hover { color: var(--green); }
-    .nav-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; color: var(--ink) !important; border: 1px solid var(--line); border-radius: 8px; background: rgba(255, 255, 255, .035); }
-    .nav-cta:hover { border-color: var(--green); }
-    .menu-button { display: none; margin-left: auto; width: 42px; height: 42px; color: var(--green); border: 1px solid var(--line); border-radius: 9px; background: transparent; font: 600 18px var(--mono); cursor: pointer; }
+    .brand-mark { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid var(--line-strong); border-radius: 8px; color: var(--green); background: var(--green-soft); font: 500 12px var(--mono); transition: border-color .2s; }
+    .brand:hover .brand-mark { border-color: rgba(183, 200, 170, .55); }
+    .brand-name span { color: var(--green); }
+    .nav-links { margin-left: auto; display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font: 500 14px var(--sans); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.is-active { color: var(--ink); }
+    .nav-links a.is-active { text-decoration-line: underline; text-decoration-color: var(--green); text-decoration-thickness: 1px; text-underline-offset: 10px; }
+    .nav-links .nav-cta { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: rgba(255, 255, 255, .035); transition: border-color .2s, color .2s; }
+    .nav-links .nav-cta:hover { border-color: var(--green); color: var(--green); }
+    .menu-button { display: none; position: relative; width: 42px; height: 42px; margin-left: auto; padding: 0; border: 1px solid var(--line); border-radius: 9px; background: transparent; cursor: pointer; }
+    .menu-button span { position: absolute; left: 12px; right: 12px; height: 1.5px; border-radius: 2px; background: var(--green); transition: transform .25s var(--ease); }
+    .menu-button span:first-child { top: 15.5px; }
+    .menu-button span:last-child { top: 23px; }
+    .menu-button[aria-expanded="true"] span:first-child { transform: translateY(3.75px) rotate(45deg); }
+    .menu-button[aria-expanded="true"] span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
 
-    .hero { position: relative; isolation: isolate; border-bottom: 1px solid var(--line); overflow: hidden; }
+    /* Hero */
+    .hero { position: relative; isolation: isolate; display: grid; align-items: center; min-height: 600px; min-height: clamp(540px, calc(100svh - var(--nav-h) - 96px), 820px); overflow: hidden; border-bottom: 1px solid var(--line); }
     .hero-media { position: absolute; inset: 0; z-index: -1; }
-    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 66% 50%; filter: saturate(.35) brightness(.55) contrast(1.05); }
-    .hero-media::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, #151513 8%, rgba(21,21,19,.9) 38%, rgba(21,21,19,.45) 72%, rgba(21,21,19,.7) 100%), linear-gradient(0deg, #151513 0%, transparent 45%); }
-    .hero-inner { padding: 120px 0 96px; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 24px; color: var(--green); font: 600 11px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
-    .eyebrow::before { width: 22px; height: 1px; content: ""; background: var(--green); }
-    h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.045em; }
-    h1 { max-width: 760px; margin: 0; font-size: clamp(3.1rem, 7vw, 6.4rem); line-height: 1.01; }
-    h1 span { color: var(--green); }
-    .hero-copy { max-width: 560px; margin: 26px 0 32px; color: #c1bfb7; font-size: clamp(1rem, 1.35vw, 1.14rem); line-height: 1.7; }
-    .actions { display: flex; flex-wrap: wrap; gap: 11px; }
-    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 0 18px; border: 1px solid var(--line); border-radius: 8px; text-decoration: none; font: 600 12px var(--sans); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
-    .button:hover { transform: translateY(-2px); border-color: var(--green); }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 66% 50%; filter: saturate(.35) brightness(.55) contrast(1.05); animation: media-in 1.6s var(--ease) both; }
+    .hero-media::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, #151513 8%, rgba(21, 21, 19, .9) 38%, rgba(21, 21, 19, .45) 72%, rgba(21, 21, 19, .7) 100%), linear-gradient(0deg, #151513 0%, transparent 45%); }
+    .hero-inner { padding: 96px 0 88px; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; color: var(--green); font: 400 13px var(--mono); }
+    .eyebrow::before { width: 24px; height: 1px; content: ""; background: currentColor; }
+    h1 { font: 300 clamp(3rem, 7.2vw, 6.4rem)/1 var(--serif); letter-spacing: -.035em; }
+    .h1-line { display: block; }
+    /* Segunda linha do título: digitada em mono, com o cursor "_" da marca */
+    .h1-term { display: block; margin-top: .2em; color: var(--green); font-family: var(--mono); font-weight: 400; font-size: min(.58em, calc((100vw - 32px) / 9.8)); line-height: 1.15; letter-spacing: 0; white-space: nowrap; }
+    .h1-term .type { display: inline-block; vertical-align: bottom; width: 15ch; overflow: hidden; animation: type .9s steps(15, end) .45s both; }
+    .h1-term::after { display: inline-block; width: .6em; height: .08em; margin-left: .1em; content: ""; vertical-align: -.05em; background: currentColor; animation: blink 1.05s steps(1) 1.35s 3; }
+    .hero-copy { max-width: 33em; margin: 30px 0 34px; color: var(--ink-2); font-size: clamp(1rem, 1.3vw, 1.125rem); line-height: 1.7; }
+    @keyframes media-in { from { opacity: 0; transform: scale(1.04); } }
+    @keyframes type { from { width: 0; } }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Botões */
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 20px; border: 1px solid var(--line-strong); border-radius: 8px; color: var(--ink); text-decoration: none; font: 500 14px var(--sans); transition: background-color .2s, border-color .2s, color .2s; }
     .button.primary { color: #1a1b17; border-color: #e8e5dc; background: #e8e5dc; }
-    .button.primary:hover { border-color: #f2f0e9; background: #f2f0e9; }
+    .button.primary:hover { border-color: var(--ink); background: var(--ink); }
     .button.secondary { background: rgba(255, 255, 255, .035); }
+    .button.secondary:hover { border-color: var(--green); color: var(--green); }
+    .arrow { display: inline-block; transition: transform .2s var(--ease), color .2s; }
+    .button:hover .arrow.down { transform: translateY(2px); }
+    .button:hover .arrow.out, .project-card:hover .arrow.out, .status-item:hover .arrow.out { transform: translate(2px, -2px); }
+    .button:hover .arrow.right, .project-card:hover .arrow.right { transform: translateX(3px); }
 
-    .proof { border-bottom: 1px solid var(--line); background: #191916; }
-    .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-    .proof-item { padding: 23px 24px; border-right: 1px solid var(--line); text-decoration: none; transition: background .2s ease; }
-    .proof-item:hover { background: rgba(255, 255, 255, .02); }
-    .proof-item:last-child { border-right: 0; }
-    .proof-item strong { display: block; font: 600 1.2rem var(--sans); }
-    .proof-item span { color: var(--muted); font: 10px var(--sans); text-transform: uppercase; letter-spacing: .08em; }
+    /* Barra de versões */
+    .status { border-bottom: 1px solid var(--line); background: var(--bg-raised); }
+    .status-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .status-item { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; padding: 22px 44px 22px 24px; border-right: 1px solid var(--line); text-decoration: none; }
+    .status-item:first-child { padding-left: 0; }
+    .status-item:last-child { border-right: 0; }
+    .status-name { color: var(--muted-2); font: 400 12.5px var(--mono); transition: color .2s; }
+    .status-value { color: var(--ink); font: 500 clamp(1.3rem, 2vw, 1.6rem)/1 var(--mono); letter-spacing: -.02em; }
+    .status-item .arrow { position: absolute; top: 21px; right: 22px; color: var(--muted-2); font: 13px var(--mono); }
+    .status-item:hover .status-name, .status-item:hover .arrow { color: var(--green); }
 
-    .section { padding: 100px 0; }
+    /* Seções */
+    .section { padding: clamp(80px, 11vw, 128px) 0; }
     .section + .section { border-top: 1px solid var(--line); }
-    .section-head { display: grid; grid-template-columns: 1fr .72fr; gap: 55px; align-items: end; margin-bottom: 44px; }
-    .kicker { display: block; margin-bottom: 13px; color: var(--green); font: 600 10px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
-    h2 { margin: 0; max-width: 760px; font-size: clamp(2.1rem, 4.4vw, 3.9rem); line-height: 1.08; }
-    .lead { margin: 0; color: var(--muted); font-size: .97rem; line-height: 1.75; }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 56px; align-items: end; margin-bottom: 48px; }
+    .kicker { margin-bottom: 18px; color: var(--green); font: 400 13px var(--mono); }
+    h2 { max-width: 15em; font: 300 clamp(2.3rem, 4.4vw, 3.75rem)/1.05 var(--serif); letter-spacing: -.03em; }
+    .lead { max-width: 36em; color: var(--muted); font-size: 1rem; line-height: 1.75; }
 
+    /* SiliconFlower */
     .featured { display: grid; grid-template-columns: 1.05fr .95fr; border: 1px solid var(--line-strong); border-radius: 18px; overflow: hidden; background: linear-gradient(135deg, #22231f, #191916 75%); }
     .featured-copy { padding: clamp(28px, 5vw, 56px); }
-    .featured-label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 38px; color: var(--green); font: 600 11px var(--mono); letter-spacing: .05em; }
-    .featured-label::before { width: 22px; height: 1px; content: ""; background: var(--green); }
-    .featured h3 { margin: 0 0 16px; font: 400 clamp(2rem, 3.8vw, 3.1rem)/1.08 var(--serif); letter-spacing: -.04em; }
-    .featured p { max-width: 540px; margin: 0 0 24px; color: var(--muted); line-height: 1.75; }
-    .facts { margin: 0 0 28px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-    .facts li { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 11px 0; color: var(--muted); border-bottom: 1px solid var(--line); font-size: .88rem; }
-    .facts li span { color: var(--ink); font: 500 11px/1.9 var(--mono); }
-    .featured-links { display: flex; flex-wrap: wrap; gap: 11px; }
-    .featured-panel { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 52px); border-left: 1px solid var(--line); background: rgba(0, 0, 0, .12); }
-    .code-window { border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; background: #111110; box-shadow: 0 24px 60px rgba(0, 0, 0, .24); }
-    .code-window-head { display: flex; align-items: center; gap: 7px; padding: 12px 14px; color: #aaa79e; border-bottom: 1px solid var(--line); background: #1c1c19; font: 10px var(--sans); }
-    .code-window-head .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
-    .code-window-head .dot:nth-child(2) { background: var(--amber); }
-    .code-window-head .dot:nth-child(3) { background: var(--green); }
-    .code-window-head .title { margin-left: 7px; }
-    .code-window pre { margin: 0; padding: 22px; color: #a9a69d; font: 11px/1.85 var(--mono); white-space: pre-wrap; }
-    .code-window .comment { color: var(--muted-2); }
-    .code-window .command { color: var(--green); }
+    .featured-meta { margin-bottom: 30px; color: var(--muted-2); font: 400 13px var(--mono); }
+    .featured-meta b { margin-right: .6ch; color: var(--green); font-weight: 400; }
+    .featured h3 { margin-bottom: 32px; font: 300 clamp(2.1rem, 3.8vw, 3.2rem)/1.05 var(--serif); letter-spacing: -.03em; }
+    .facts { margin-bottom: 34px; border-top: 1px solid var(--line); }
+    .facts div { display: grid; grid-template-columns: 112px 1fr; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .facts dt { color: var(--muted-2); font: 400 12.5px/1.8 var(--mono); }
+    .facts dd { color: var(--ink-2); font-size: .94rem; line-height: 1.6; }
+    .facts a { color: var(--ink); text-decoration-color: rgba(183, 200, 170, .5); text-underline-offset: 3px; white-space: nowrap; transition: color .2s; }
+    .facts a:hover { color: var(--green); }
+    .featured-panel { display: flex; flex-direction: column; justify-content: center; padding: clamp(24px, 4.5vw, 52px); border-left: 1px solid var(--line); background: rgba(0, 0, 0, .14); }
 
-    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .project-card { min-height: 260px; display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
-    .project-card:hover { transform: translateY(-3px); border-color: var(--line-strong); }
-    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 40px; }
-    .card-index { color: var(--muted-2); font: 10px var(--mono); }
-    .card-state { display: inline-flex; align-items: center; gap: 7px; color: var(--green); font: 600 9px var(--mono); text-transform: uppercase; letter-spacing: .07em; }
+    /* Janela de terminal (estilo Windows Terminal, já que a instalação é no PowerShell) */
+    .terminal { border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; background: var(--term); box-shadow: 0 24px 60px rgba(0, 0, 0, .28); }
+    .term-bar { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; height: 44px; padding: 0 8px; border-bottom: 1px solid var(--line); background: #1b1b18; }
+    .term-tab { display: inline-flex; align-items: center; gap: 9px; height: 34px; margin-bottom: -1px; padding: 0 18px 0 10px; border: 1px solid var(--line); border-bottom: 0; border-radius: 8px 8px 0 0; color: var(--ink-2); background: var(--term); font: 500 12.5px var(--sans); }
+    .term-icon { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 4px; color: var(--green); background: var(--green-soft); font: 500 8.5px var(--mono); }
+    .copy-btn { align-self: center; display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 10px; border: 1px solid var(--line); border-radius: 7px; color: var(--muted); background: transparent; font: 400 12px var(--mono); cursor: pointer; transition: color .2s, border-color .2s, background-color .2s; }
+    .copy-btn svg { width: 13px; height: 13px; flex: none; }
+    .copy-btn:hover { color: var(--ink); border-color: var(--line-strong); background: rgba(255, 255, 255, .04); }
+    .copy-btn.is-copied { color: var(--green); border-color: rgba(183, 200, 170, .45); }
+    .term-body { padding: 20px 22px 24px; color: #a9a69d; font: 400 12.5px/1.85 var(--mono); }
+    .ln { display: flex; gap: 1ch; }
+    .ln.c { color: var(--muted-2); }
+    .ln:not(.c) + .ln.c { margin-top: 1.1em; }
+    .prompt { flex: none; color: var(--muted-2); -webkit-user-select: none; user-select: none; }
+    .ln code { min-width: 0; color: var(--green); font: inherit; overflow-wrap: anywhere; }
+
+    /* Projetos */
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project-card { display: flex; flex-direction: column; min-height: 270px; padding: 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); text-decoration: none; transition: border-color .2s, background-color .2s; }
+    .project-card.is-archived { border-style: dashed; border-color: var(--line-strong); background: transparent; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 36px; font: 400 12.5px var(--mono); }
+    .card-slug { color: var(--muted-2); }
+    .card-state { display: inline-flex; align-items: center; gap: 8px; color: var(--green); }
     .card-state::before { width: 6px; height: 6px; content: ""; border-radius: 50%; background: currentColor; }
     .card-state.archived { color: var(--muted-2); }
-    .project-card h3 { margin: 0 0 11px; font-size: 1.2rem; letter-spacing: -.025em; }
-    .project-card p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.7; }
-    .card-foot { margin-top: auto; padding-top: 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .language { color: var(--muted); font: 10px var(--mono); }
-    .language::before { display: inline-block; width: 7px; height: 7px; margin-right: 7px; content: ""; border-radius: 50%; background: var(--green); }
+    .card-state.archived::before { border: 1px solid currentColor; background: transparent; }
+    .project-card h3 { margin-bottom: 12px; font: 400 clamp(1.5rem, 2.3vw, 1.85rem)/1.15 var(--serif); letter-spacing: -.025em; }
+    .project-card p { max-width: 46ch; color: var(--muted); font-size: .94rem; line-height: 1.7; }
+    .card-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 28px; }
+    .language { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font: 400 12.5px var(--mono); }
+    .language::before { width: 8px; height: 8px; content: ""; border-radius: 50%; background: var(--green); }
     .language.ts::before { background: #3178c6; }
     .language.ps::before { background: #5391fe; }
     .language.py::before { background: #ffdf66; }
-    .card-arrow { color: var(--green); font: 15px var(--mono); transition: transform .2s ease; }
-    .project-card:hover .card-arrow { transform: translate(3px, -3px); }
+    .card-foot .arrow { color: var(--green); font: 16px var(--mono); }
+    @media (hover: hover) {
+      .project-card:hover { border-color: var(--line-strong); background-color: var(--surface-hover); }
+      .project-card.is-archived:hover { border-color: rgba(241, 239, 232, .34); background-color: rgba(255, 255, 255, .02); }
+    }
 
-    .contact { padding: 30px 0 95px; }
-    .contact-box { position: relative; padding: clamp(38px, 7vw, 72px); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: linear-gradient(135deg, #22231f, #191916 75%); }
-    .contact-box::after { position: absolute; top: -160px; right: -130px; width: 450px; height: 450px; content: ""; border: 1px solid rgba(241,239,232,.055); border-radius: 50%; box-shadow: 0 0 0 70px rgba(241,239,232,.008), 0 0 0 140px rgba(241,239,232,.005); }
-    .contact-box > * { position: relative; z-index: 1; }
-    .contact-box p { max-width: 560px; margin: 20px 0 30px; color: var(--muted); line-height: 1.75; }
-    footer { color: var(--muted-2); border-top: 1px solid var(--line); font: 11px var(--sans); }
-    .footer-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 25px; }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
-    .footer-links a { text-decoration: none; }
+    /* Contato */
+    .contact { padding: 24px 0 clamp(80px, 9vw, 104px); }
+    .contact-box { position: relative; isolation: isolate; overflow: hidden; padding: clamp(40px, 7vw, 76px); border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(135deg, #22231f, #191916 75%); }
+    .contact-mark { position: absolute; z-index: -1; top: 50%; right: clamp(24px, 5vw, 72px); color: rgba(241, 239, 232, .05); font: 500 clamp(7rem, 17vw, 14rem)/1 var(--mono); letter-spacing: -.06em; transform: translateY(-58%); pointer-events: none; -webkit-user-select: none; user-select: none; }
+    .contact-copy { max-width: 34em; margin: 20px 0 32px; color: var(--muted); line-height: 1.75; }
+
+    /* Rodapé */
+    .footer { border-top: 1px solid var(--line); color: var(--muted-2); font: 400 12.5px var(--mono); }
+    .footer-inner { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-links a { text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: var(--green); }
 
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    :focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
-
     @media (max-width: 920px) {
-      .section-head, .featured { grid-template-columns: 1fr; gap: 22px; }
+      .section-head, .featured { grid-template-columns: 1fr; }
+      .section-head { gap: 20px; }
       .featured-panel { border-left: 0; border-top: 1px solid var(--line); }
       .hero-media img { object-position: 61% 50%; }
-      .hero-media::after { background: linear-gradient(90deg, rgba(21,21,19,.94), rgba(21,21,19,.55)), linear-gradient(0deg, #151513 0%, transparent 50%); }
+      .hero-media::after { background: linear-gradient(90deg, rgba(21, 21, 19, .94), rgba(21, 21, 19, .55)), linear-gradient(0deg, #151513 0%, transparent 50%); }
+      .status-grid { grid-template-columns: repeat(2, 1fr); }
+      .status-item:nth-child(odd) { padding-left: 0; }
+      .status-item:nth-child(even) { border-right: 0; }
+      .status-item:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
     }
 
     @media (max-width: 700px) {
+      :root { --nav-h: 62px; }
       .shell { width: min(calc(100% - 28px), var(--max)); }
-      .menu-button { display: grid; place-items: center; }
-      .nav-links { position: absolute; top: 69px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 14px 18px; border-bottom: 1px solid var(--line); background: rgba(21,21,19,.98); }
-      .nav-links.open { display: flex; }
-      .nav-links a { padding: 14px; }
-      .nav-cta { margin-top: 6px; }
-      .hero-inner { padding: 84px 0 64px; }
-      h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
-      .proof-grid { grid-template-columns: repeat(2, 1fr); }
-      .proof-item:nth-child(2) { border-right: 0; }
-      .proof-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .menu-button { display: block; }
+      .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 2px; padding: 10px 14px 18px; border-bottom: 1px solid var(--line); background: var(--bg); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .2s, transform .2s var(--ease), visibility 0s linear .2s; }
+      .nav-links.open { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .2s var(--ease); }
+      .nav-links a { padding: 14px 12px; border-radius: 8px; font-size: 15px; }
+      .nav-links a.is-active { color: var(--green); text-decoration-line: none; }
+      .nav-links .nav-cta { justify-content: space-between; margin-top: 8px; padding: 14px 12px; }
+      .hero { min-height: 0; }
+      .hero-inner { padding: 72px 0 64px; }
+      h1 { font-size: clamp(2.3rem, 12.2vw, 3.6rem); }
+      .hero-copy { margin: 26px 0 30px; }
+      .actions .button { flex: 1 1 auto; }
+      .status-item { padding: 18px 36px 18px 16px; }
+      .status-item:nth-child(odd) { padding-left: 0; }
+      .status-item .arrow { top: 17px; right: 14px; }
+      .contact-mark { display: none; }
       .section { padding: 76px 0; }
       .project-grid { grid-template-columns: 1fr; }
-      .facts li { grid-template-columns: 90px 1fr; }
-      .footer-inner { padding: 22px 0; flex-direction: column; align-items: flex-start; }
+      .project-card { min-height: 0; padding: 24px; }
+      .card-top { margin-bottom: 28px; }
+      .facts div { grid-template-columns: 92px 1fr; gap: 12px; }
+      .term-body { padding: 18px 16px 20px; font-size: 12px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; justify-content: center; gap: 14px; padding: 26px 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
   </style>
 </head>
@@ -208,10 +268,10 @@
   <header class="topbar">
     <nav class="nav shell" aria-label="Navegação principal">
       <a class="brand" href="#top" aria-label="1155DOSILICON — início">
-        <span class="brand-mark">&gt;_</span>
-        <span>1155DO<span>SILICON</span></span>
+        <span class="brand-mark" aria-hidden="true">&gt;_</span>
+        <span class="brand-name">1155DO<span>SILICON</span></span>
       </a>
-      <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">≡</button>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menu"><span></span><span></span></button>
       <div class="nav-links" id="nav-links">
         <a href="#siliconflower">SiliconFlower</a>
         <a href="#projetos">Projetos</a>
@@ -223,147 +283,222 @@
 
   <main id="main">
     <section class="hero" id="top">
-      <div class="hero-media" aria-hidden="true"><img src="avatarupscaled-v2.webp" alt="" fetchpriority="high"></div>
+      <div class="hero-media" aria-hidden="true">
+        <img src="avatarupscaled-v2.webp" alt="" fetchpriority="high" onerror="this.onerror=null;this.src='https://1155dosilicon.github.io/avatarupscaled-v2.webp'">
+      </div>
       <div class="hero-inner shell">
-        <span class="eyebrow">open source · brasil</span>
-        <h1>Software rápido.<br><span>Controle total.</span></h1>
+        <p class="eyebrow">open source · brasil</p>
+        <h1>
+          <span class="h1-line">Software rápido.</span>
+          <span class="h1-term"><span class="type">Controle total.</span></span>
+        </h1>
         <p class="hero-copy">Agentes de IA e ferramentas de terminal para Windows e Linux, escritos em TypeScript, PowerShell e Python. Todo o código está no GitHub.</p>
         <div class="actions">
-          <a class="button primary" href="#siliconflower">Ver projetos <span aria-hidden="true">↓</span></a>
-          <a class="button secondary" href="https://github.com/1155dosilicon" target="_blank" rel="noopener">github.com/1155dosilicon <span aria-hidden="true">↗</span></a>
+          <a class="button primary" href="#siliconflower">Ver projetos <span class="arrow down" aria-hidden="true">↓</span></a>
+          <a class="button secondary" href="https://github.com/1155dosilicon" target="_blank" rel="noopener">github.com/1155dosilicon <span class="arrow out" aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
 
-    <div class="proof">
-      <div class="proof-grid shell">
-        <a class="proof-item" href="https://github.com/1155dosilicon/siliconflower/releases" target="_blank" rel="noopener"><strong>0.2.9</strong><span>SiliconFlower</span></a>
-        <a class="proof-item" href="https://github.com/1155dosilicon/markiidown/releases" target="_blank" rel="noopener"><strong>1.1.0</strong><span>MarkiiDown</span></a>
-        <a class="proof-item" href="https://github.com/1155dosilicon/otimizador-windows" target="_blank" rel="noopener"><strong>v3.3</strong><span>Otimizador Windows</span></a>
-        <a class="proof-item" href="https://github.com/1155dosilicon?tab=repositories" target="_blank" rel="noopener"><strong>7</strong><span>repositórios públicos</span></a>
+    <div class="status">
+      <div class="status-grid shell">
+        <a class="status-item" href="https://github.com/1155dosilicon/siliconflower/releases" target="_blank" rel="noopener"><span class="status-name">siliconflower</span><strong class="status-value">v0.2.9</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon/markiidown/releases" target="_blank" rel="noopener"><span class="status-name">markiidown</span><strong class="status-value">v1.1.0</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon/otimizador-windows" target="_blank" rel="noopener"><span class="status-name">otimizador-windows</span><strong class="status-value">v3.3</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon?tab=repositories" target="_blank" rel="noopener"><span class="status-name">repositórios públicos</span><strong class="status-value">7</strong><span class="arrow out" aria-hidden="true">↗</span></a>
       </div>
     </div>
 
     <section class="section shell" id="siliconflower">
-      <header class="section-head reveal">
-        <div><span class="kicker">01 / Projeto principal</span><h2>Um agente de engenharia no terminal.</h2></div>
+      <header class="section-head">
+        <div>
+          <p class="kicker"># projeto principal</p>
+          <h2>Um agente de engenharia no terminal.</h2>
+        </div>
         <p class="lead">CLI/TUI que lê o repositório, edita arquivos, roda comandos e delega tarefas a subagentes, com cada ação visível na tela.</p>
       </header>
 
-      <article class="featured reveal">
+      <article class="featured">
         <div class="featured-copy">
-          <span class="featured-label">SILICONFLOWER · v0.2.9 · MIT</span>
+          <p class="featured-meta"><b>siliconflower</b> v0.2.9 · licença MIT</p>
           <h3>IA agêntica,<br>direto no terminal.</h3>
-          <ul class="facts">
-            <li><span>ferramentas</span>34 nativas: arquivos, busca, comandos, web, memória e worktrees</li>
-            <li><span>agentes</span>subagentes e tarefas em background</li>
-            <li><span>modelos</span>qualquer API compatível com OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo)</li>
-            <li><span>extensões</span>servidores MCP, hooks e skills em Markdown</li>
-            <li><span>plataforma</span>Windows · port para Linux/macOS em <a href="https://github.com/1155dosilicon/siliconflower-nix" target="_blank" rel="noopener">siliconflower-nix</a></li>
-          </ul>
-          <div class="featured-links">
-            <a class="button primary" href="siliconflower.html">Ver apresentação <span aria-hidden="true">→</span></a>
-            <a class="button secondary" href="https://github.com/1155dosilicon/siliconflower" target="_blank" rel="noopener">Repositório <span aria-hidden="true">↗</span></a>
+          <dl class="facts">
+            <div><dt>ferramentas</dt><dd>34 nativas: arquivos, busca, comandos, web, memória e worktrees</dd></div>
+            <div><dt>agentes</dt><dd>subagentes e tarefas em background</dd></div>
+            <div><dt>modelos</dt><dd>qualquer API compatível com OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo)</dd></div>
+            <div><dt>extensões</dt><dd>servidores MCP, hooks e skills em Markdown</dd></div>
+            <div><dt>plataforma</dt><dd>Windows · port para Linux/macOS em <a href="https://github.com/1155dosilicon/siliconflower-nix" target="_blank" rel="noopener">siliconflower-nix</a></dd></div>
+          </dl>
+          <div class="actions">
+            <a class="button primary" href="siliconflower.html">Ver apresentação <span class="arrow right" aria-hidden="true">→</span></a>
+            <a class="button secondary" href="https://github.com/1155dosilicon/siliconflower" target="_blank" rel="noopener">Repositório <span class="arrow out" aria-hidden="true">↗</span></a>
           </div>
         </div>
+
         <div class="featured-panel">
-          <div class="code-window">
-            <div class="code-window-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">PowerShell</span></div>
-            <pre><span class="comment"># clone e instale</span>
-<span class="command">git clone https://github.com/1155dosilicon/siliconflower.git</span>
-<span class="command">cd siliconflower</span>
-<span class="command">bun install</span>
-
-<span class="comment"># wizard de configuração na 1ª execução</span>
-<span class="command">bun run start</span>
-
-<span class="comment"># ativa a memória de projeto na pasta atual</span>
-<span class="command">siliconflower init</span></pre>
-          </div>
+          <figure class="terminal">
+            <div class="term-bar">
+              <span class="term-tab"><span class="term-icon" aria-hidden="true">&gt;_</span>PowerShell</span>
+              <button class="copy-btn" type="button" title="Copiar comandos de instalação" data-copy="git clone https://github.com/1155dosilicon/siliconflower.git&#10;cd siliconflower&#10;bun install&#10;bun run start">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 5.5v-2A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"/></svg>
+                <span class="copy-label">copiar</span>
+              </button>
+            </div>
+            <div class="term-body">
+              <div class="ln c"># clone e instale</div>
+              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>git clone https://github.com/1155dosilicon/siliconflower.git</code></div>
+              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>cd siliconflower</code></div>
+              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>bun install</code></div>
+              <div class="ln c"># wizard de configuração na 1ª execução</div>
+              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>bun run start</code></div>
+              <div class="ln c"># ativa a memória de projeto na pasta atual</div>
+              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>siliconflower init</code></div>
+            </div>
+            <figcaption class="sr-only">Instalação do SiliconFlower no PowerShell</figcaption>
+          </figure>
+          <p class="sr-only" id="copy-status" role="status" aria-live="polite"></p>
         </div>
       </article>
     </section>
 
     <section class="section shell" id="projetos">
-      <header class="section-head reveal">
-        <div><span class="kicker">02 / Repositórios</span><h2>Outros projetos.</h2></div>
+      <header class="section-head">
+        <div>
+          <p class="kicker"># repositórios</p>
+          <h2>Outros projetos.</h2>
+        </div>
         <p class="lead">Ferramentas pequenas, cada uma resolvendo um problema específico.</p>
       </header>
 
       <div class="project-grid">
-        <a class="project-card reveal" href="https://github.com/1155dosilicon/siliconflower-nix" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-index">siliconflower-nix</span><span class="card-state">v0.2.6</span></div>
+        <a class="project-card" href="https://github.com/1155dosilicon/siliconflower-nix" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">siliconflower-nix</span><span class="card-state">v0.2.6</span></div>
           <h3>SiliconFlower para Linux/macOS</h3>
           <p>Port multiplataforma do SiliconFlower. Mesmas ferramentas e TUI, com build nativo para Linux e macOS além do Windows.</p>
-          <div class="card-foot"><span class="language ts">TypeScript</span><span class="card-arrow">↗</span></div>
+          <div class="card-foot"><span class="language ts">TypeScript</span><span class="arrow out" aria-hidden="true">↗</span></div>
         </a>
 
-        <a class="project-card reveal" href="https://github.com/1155dosilicon/markiidown" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-index">markiidown</span><span class="card-state">v1.1.0</span></div>
+        <a class="project-card" href="https://github.com/1155dosilicon/markiidown" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">markiidown</span><span class="card-state">v1.1.0</span></div>
           <h3>MarkiiDown</h3>
           <p>Leitor e editor de Markdown e código no terminal, 100% offline. Realce de sintaxe, busca, sumário, exportação HTML e instalação no Windows sem administrador.</p>
-          <div class="card-foot"><span class="language ts">TypeScript · Bun</span><span class="card-arrow">↗</span></div>
+          <div class="card-foot"><span class="language ts">TypeScript · Bun</span><span class="arrow out" aria-hidden="true">↗</span></div>
         </a>
 
-        <a class="project-card reveal" href="https://github.com/1155dosilicon/otimizador-windows" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-index">otimizador-windows</span><span class="card-state">v3.3</span></div>
+        <a class="project-card" href="https://github.com/1155dosilicon/otimizador-windows" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">otimizador-windows</span><span class="card-state">v3.3</span></div>
           <h3>Otimizador Windows</h3>
           <p>19 ajustes pós-instalação de desempenho e privacidade para Windows 10/11, como script .ps1 ou .exe.</p>
-          <div class="card-foot"><span class="language ps">PowerShell</span><span class="card-arrow">↗</span></div>
+          <div class="card-foot"><span class="language ps">PowerShell</span><span class="arrow out" aria-hidden="true">↗</span></div>
         </a>
 
-        <a class="project-card reveal" href="llm-imprensa.html">
-          <div class="card-top"><span class="card-index">llm-imprensa-2026</span><span class="card-state archived">arquivado</span></div>
+        <a class="project-card is-archived" href="llm-imprensa.html">
+          <div class="card-top"><span class="card-slug">llm-imprensa-2026</span><span class="card-state archived">arquivado</span></div>
           <h3>LLMs vs. Imprensa</h3>
           <p>Estudo preliminar sobre viés político no Brasil (jan–set/2026) com 7 LLMs, protocolo A/B/C/D, prompts e dados abertos.</p>
-          <div class="card-foot"><span class="language py">Python · Pesquisa</span><span class="card-arrow">→</span></div>
+          <div class="card-foot"><span class="language py">Python · Pesquisa</span><span class="arrow right" aria-hidden="true">→</span></div>
         </a>
       </div>
     </section>
 
     <section class="contact shell">
-      <div class="contact-box reveal">
-        <span class="kicker">Código aberto</span>
+      <div class="contact-box">
+        <span class="contact-mark" aria-hidden="true">&gt;_</span>
+        <p class="kicker"># código aberto</p>
         <h2>Veja o código. Rode local.</h2>
-        <p>Código, releases e issues de todos os projetos estão no GitHub.</p>
+        <p class="contact-copy">Código, releases e issues de todos os projetos estão no GitHub.</p>
         <div class="actions">
-          <a class="button primary" href="https://github.com/1155dosilicon?tab=repositories" target="_blank" rel="noopener">Abrir repositórios <span aria-hidden="true">↗</span></a>
-          <a class="button secondary" href="https://youtube.com/@1155doSilicon" target="_blank" rel="noopener">YouTube <span aria-hidden="true">↗</span></a>
+          <a class="button primary" href="https://github.com/1155dosilicon?tab=repositories" target="_blank" rel="noopener">Abrir repositórios <span class="arrow out" aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="https://youtube.com/@1155doSilicon" target="_blank" rel="noopener">YouTube <span class="arrow out" aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="footer-inner shell">
       <span>© 2026 1155DOSILICON</span>
-      <div class="footer-links"><a href="llms.txt">llms.txt</a><a href="llms-full.txt">llms-full.txt</a><a href="sitemap.xml">sitemap.xml</a><a href="#top">↑ topo</a></div>
+      <nav class="footer-links" aria-label="Arquivos do site">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+        <a href="#top">↑ topo</a>
+      </nav>
     </div>
   </footer>
 
   <script>
-    const menuButton = document.querySelector('.menu-button');
-    const navLinks = document.querySelector('.nav-links');
-    menuButton.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(open));
-      menuButton.textContent = open ? '×' : '≡';
-    });
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuButton.textContent = '≡';
-    }));
-
-    const reveal = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          reveal.unobserve(entry.target);
-        }
+    (() => {
+      // Menu mobile
+      const menuButton = document.querySelector('.menu-button');
+      const navLinks = document.getElementById('nav-links');
+      const setMenu = open => {
+        navLinks.classList.toggle('open', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      };
+      menuButton.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+      navLinks.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
+      document.addEventListener('click', event => {
+        if (navLinks.classList.contains('open') && !event.target.closest('.nav')) setMenu(false);
       });
-    }, { threshold: .08 });
-    document.querySelectorAll('.reveal').forEach(element => reveal.observe(element));
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && navLinks.classList.contains('open')) { setMenu(false); menuButton.focus(); }
+      });
+      const desktop = matchMedia('(min-width: 701px)');
+      if (desktop.addEventListener) desktop.addEventListener('change', event => { if (event.matches) setMenu(false); });
+
+      // Destaca no menu a seção que está na tela
+      const sectionLinks = new Map();
+      navLinks.querySelectorAll('a[href^="#"]').forEach(link => {
+        const section = document.querySelector(link.getAttribute('href'));
+        if (section) sectionLinks.set(section, link);
+      });
+      if ('IntersectionObserver' in window) {
+        const spy = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const link = sectionLinks.get(entry.target);
+            link.classList.toggle('is-active', entry.isIntersecting);
+            if (entry.isIntersecting) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sectionLinks.forEach((link, section) => spy.observe(section));
+      }
+
+      // Copiar comandos de instalação
+      const copyButton = document.querySelector('.copy-btn');
+      const copyLabel = copyButton.querySelector('.copy-label');
+      const copyStatus = document.getElementById('copy-status');
+      let copyTimer;
+      const fallbackCopy = text => {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
+        document.body.appendChild(area);
+        area.select();
+        let copied = false;
+        try { copied = document.execCommand('copy'); } catch (error) { copied = false; }
+        area.remove();
+        return copied;
+      };
+      copyButton.addEventListener('click', async () => {
+        const text = copyButton.dataset.copy;
+        let copied;
+        try { await navigator.clipboard.writeText(text); copied = true; }
+        catch (error) { copied = fallbackCopy(text); }
+        copyButton.classList.toggle('is-copied', copied);
+        copyLabel.textContent = copied ? 'copiado' : 'copie manualmente';
+        copyStatus.textContent = copied ? 'Comandos de instalação copiados.' : 'Não foi possível copiar. Selecione os comandos e copie manualmente.';
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => {
+          copyButton.classList.remove('is-copied');
+          copyLabel.textContent = 'copiar';
+          copyStatus.textContent = '';
+        }, 2200);
+      });
+    })();
   </script>
 </body>
 </html>
