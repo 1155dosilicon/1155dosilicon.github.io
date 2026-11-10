@@ -1,4 +1,4 @@
-# 1155DOSILICON — Arquitetura Técnica, SiliconFlower AI, MarkiiDown & Otimizações
+# 1155DOSILICON — Siliconflower, MarkiiDown, Otimizador Windows e extensões GNOME
 # Documentação Completa para Modelos de Linguagem (LLMs)
 
 Autor: 1155dosilicon
@@ -7,42 +7,37 @@ Site Oficial: https://1155dosilicon.github.io/
 
 ---
 
-## 🌸 1. SiliconFlower — Agente Autônomo de IA CLI/TUI (1º Destaque)
+## 🌸 1. Siliconflower — Agente de IA para programar (1º Destaque)
 
 ### 1.1 Visão Geral
-O **SiliconFlower** é um harness CLI/TUI de alta performance para desenvolvimento de software no Windows. Ele permite executar tarefas complexas de engenharia diretamente do terminal com assistência de diferentes provedores de modelos de linguagem.
+O **Siliconflower** (v0.9.1, MIT) é um agente de IA para desenvolvimento de software em **Windows 10/11 e Linux x86_64**, usado como **app de desktop** (Electron, uma janela por projeto) ou como **interface no navegador** (`siliconflower gui`). É escrito em TypeScript e compilado com o Bun em binário único; o app já traz o agente, sem precisar de Node.js nem Bun.
+
+- Página: https://1155dosilicon.github.io/siliconflower/
+- Código: https://github.com/1155dosilicon/siliconflower
+- Downloads: https://github.com/1155dosilicon/siliconflower/releases/latest (`Siliconflower-Setup-<versão>.exe`, `siliconflower.exe`, `Siliconflower-<versão>-amd64.deb`, `Siliconflower-<versão>-x86_64.AppImage`, `install-appimage.sh`, `siliconflower-linux-x64`)
+- Desde a 0.9.0 não há suporte a macOS nem a ARM.
 
 ### 1.2 Principais Capacidades
-1. **Raciocínio Controlável (Reasoning Effort):** Permite alternar a profundidade de reflexão e cadeia de pensamento da IA entre níveis (desativado, baixo, médio, alto).
-2. **Model Context Protocol (MCP):** Integração nativa como cliente MCP via stdio, permitindo conectar servidores de ferramentas externos em tempo de execução.
-3. **Multi-Provedor:** Adaptador único compatível com a API da OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo e demais backends compatíveis). O provedor Anthropic nativo foi removido na v0.2.5.
-4. **Executável Standalone:** Compilado como binário único `.exe` de alta velocidade via Bun / TypeScript.
-5. **Memória Persistente:** Preferências, regras e contexto ficam isolados em `~/.siliconflower/workspaces/<workspace-id>/memory/`, sem criar pastas visíveis dentro do repositório do projeto; memórias globais ficam em `~/.siliconflower/memory/`.
-6. **Subagentes Autônomos:** Criação de sessões isoladas para pesquisa de código, planejamento, codificação ou verificação.
-7. **Git Worktrees:** Execução isolada em branches temporárias para validação segura de alterações.
+1. **App de desktop e navegador:** configuração sem terminal (provedor, chave, modelo e "Testar conexão"), conversas salvas por projeto, busca e renomeação de conversas, editar e reenviar a última mensagem.
+2. **Subagentes e tarefas em background:** papéis `general`, `research`, `verification`, `plan`, `coder` ou `custom`; `research` e `plan` só leem. Tarefas em background aparecem na barra lateral e podem ser encerradas.
+3. **Projetos e memória:** uma pasta com `SILICONFLOWER.md` ou `AGENTS.md` vira projeto e liga a memória de projeto, guardada em `~/.siliconflower/workspaces/<workspace-id>/`, fora do repositório.
+4. **Modos e raciocínio:** modos `programação`, `sistema` e `plano` (somente leitura); nível de pensamento `none`, `low`, `medium`, `high`.
+5. **Git worktrees** em `<repo>/.worktrees/<branch>` e **RepoMap** (TS, JS, Python, Go, Rust).
+6. **MCP, hooks e skills:** servidores MCP por stdio (`command`) ou HTTP (`url` + `headers`); hooks `preTool`, `postTool`, `onEdit`, `onCommand`, `onSessionStart`, `onSessionEnd`; skills em Markdown em `~/.siliconflower/skills/`.
+7. **Anexos:** imagens em qualquer provedor; áudio e vídeo na API Xiaomi MiMo; até 4 arquivos e 10 MB por mensagem.
+8. **Multi-provedor:** qualquer API compatível com a da OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo). `contextTokens` define o orçamento de contexto (padrão 90 mil).
+9. **Segurança:** sem sandbox; comandos rodam com os privilégios do usuário. Um `hooks.json` dentro do repositório não roda. Credenciais são mascaradas no log.
 
-### 1.3 Mapa de Ferramentas Nativas (34 Ferramentas)
-- `read_file`: Leitura paginada de arquivos com offset e limite de linhas.
-- `write_file`: Criação e sobrescrita segura de arquivos com criação de diretórios pai.
-- `edit_file`: Edição inteligente de arquivos (correspondência exata, quebras de linha normalizadas ou fuzzy whitespace).
-- `apply_patch`: Aplicação atômica de múltiplos blocos de substituição.
-- `list_directory`: Listagem recursiva e inspeção de pastas.
-- `create_directory` / `move_path` / `delete_path`: Manipulação de estrutura de diretórios.
-- `file_info`: Metadados, tamanho e datas de arquivos.
-- `search_files`: Busca de arquivos via padrões glob (`**/*.ts`, etc.).
-- `grep_content`: Busca por expressões regulares e padrões de texto dentro do código.
-- `repo_map` / `find_symbol`: Mapeamento de símbolos e assinaturas AST de código.
-- `execute_command`: Execução de comandos no shell do sistema com timeout e captura segura.
-- `ask_question`: Interface interativa de perguntas com opções customizáveis ao usuário.
-- `todowrite`: Gestão de checklist interativo na interface TUI.
-- `read_skill`: Leitura de habilidades e instruções personalizadas do usuário (`~/.siliconflower/skills/`).
-- `run_task` / `send_subagent_message`: Delegação de tarefas a subagentes autônomos.
-- `manage_background_task`: Controle de comandos e processos assíncronos.
-- `save_memory` / `recall_memory` / `forget_memory`: Ciclo de vida de memórias persistentes.
-- `enter_worktree` / `exit_worktree` / `list_worktrees`: Gestão de Git worktrees isolados.
-- `create_artifact` / `read_artifact` / `list_artifacts` / `delete_artifact`: Gestão de entregáveis em markdown, html, json, mermaid.
-- `web_fetch` / `web_search`: Consulta de páginas web e conversão para Markdown.
-- `manage_hooks`: Configuração dinâmica de ganchos de ciclo de vida (`preTool`, `postTool`, `onEdit`).
+### 1.3 Ferramentas Nativas (30)
+- Arquivos (10): `read_file`, `read_media`, `write_file`, `edit_file`, `apply_patch`, `list_directory`, `create_directory`, `move_path`, `delete_path`, `file_info`.
+- Busca (4): `search_files`, `grep_content`, `repo_map`, `find_symbol`.
+- Execução (5): `execute_command` (PowerShell no Windows, `$SHELL` no Linux), `read_logs`, `ask_question`, `todowrite`, `read_skill`.
+- Subagentes (3): `run_task`, `send_subagent_message`, `manage_background_task`.
+- Memória e worktrees (4): `memory`, `enter_worktree`, `exit_worktree`, `list_worktrees`.
+- Artefatos e web (4): `artifact`, `web_fetch`, `web_search`, `show_hooks`.
+
+### 1.4 Comandos
+`siliconflower gui`, `config`, `show`, `init` (`--agents`), `ensure`, `skills list|sync`, `logs`. Opções globais: `-m/--model`, `-r/--reasoning`, `--mode`, `--base-url`, `--api-key`.
 
 ---
 
@@ -89,8 +84,17 @@ O **otimizador-windows** é uma automação pós-instalação em PowerShell, tam
 
 ## 🛠️ 4. Utilitários & Ferramentas Open Source
 
-### 4.1 Portal Oficial 1155dosilicon.github.io
-- Portal oficial da 1155DOSILICON com documentação técnica detalhada, design dark moderno, especificações completas para LLMs e apresentação interativa.
+### 4.1 CPU Monitor para GNOME Shell
+- https://github.com/1155dosilicon/cpu-monitor-gnome — extensão do GNOME Shell 46: cilindro de uso da CPU no painel; ao passar o mouse, uso, frequência média e temperatura; ao clicar, temperatura por núcleo, load average e top-5 processos.
+
+### 4.2 GPU Monitor (AMD) para GNOME Shell
+- https://github.com/1155dosilicon/gpu-monitor-gnome — extensão do GNOME Shell 46 para GPUs AMD (`amdgpu`): uso exato via DRM fdinfo, VRAM, GTT, temperatura, clocks, ventoinha e energia.
+
+### 4.3 Radeon E9173
+- https://github.com/1155dosilicon/radeon-e9173 — VBIOS (ROM) da Radeon E9173 low profile (Lexa): `Lexa.rom` e `Lexa_OC.rom`.
+
+### 4.4 Portal Oficial 1155dosilicon.github.io
+- Portal da 1155DOSILICON com os projetos, a página do Siliconflower, o estudo LLMs vs. Imprensa e estes arquivos para LLMs.
 
 ---
 

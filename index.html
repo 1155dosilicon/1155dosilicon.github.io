@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>1155DOSILICON — Agentes de IA e ferramentas de terminal</title>
-  <meta name="description" content="Projetos open source da 1155DOSILICON: SiliconFlower (agente de IA no terminal), MarkiiDown, Otimizador Windows e estudos sobre LLMs.">
+  <title>1155DOSILICON — Agentes de IA e ferramentas open source</title>
+  <meta name="description" content="Projetos open source da 1155DOSILICON: Siliconflower (agente de IA para programar, no Windows e no Linux), MarkiiDown, Otimizador Windows, monitores de CPU e GPU para GNOME e estudos sobre LLMs.">
   <meta name="author" content="1155dosilicon">
   <meta name="theme-color" content="#151513">
   <meta name="color-scheme" content="dark">
@@ -32,7 +32,7 @@
     "url": "https://1155dosilicon.github.io/",
     "image": "https://1155dosilicon.github.io/og-cover.jpg",
     "sameAs": ["https://github.com/1155dosilicon", "https://youtube.com/@1155doSilicon"],
-    "knowsAbout": ["AI Agents", "Model Context Protocol", "TypeScript", "Bun", "PowerShell", "Windows", "Linux"]
+    "knowsAbout": ["AI Agents", "Model Context Protocol", "TypeScript", "Bun", "Electron", "PowerShell", "GNOME Shell", "Windows", "Linux"]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -150,7 +150,7 @@
     h2 { max-width: 15em; font: 300 clamp(2.3rem, 4.4vw, 3.75rem)/1.05 var(--serif); letter-spacing: -.03em; }
     .lead { max-width: 36em; color: var(--muted); font-size: 1rem; line-height: 1.75; }
 
-    /* SiliconFlower */
+    /* Siliconflower */
     .featured { display: grid; grid-template-columns: 1.05fr .95fr; border: 1px solid var(--line-strong); border-radius: 18px; overflow: hidden; background: linear-gradient(135deg, #22231f, #191916 75%); }
     .featured-copy { padding: clamp(28px, 5vw, 56px); }
     .featured-meta { margin-bottom: 30px; color: var(--muted-2); font: 400 13px var(--mono); }
@@ -164,21 +164,18 @@
     .facts a:hover { color: var(--green); }
     .featured-panel { display: flex; flex-direction: column; justify-content: center; padding: clamp(24px, 4.5vw, 52px); border-left: 1px solid var(--line); background: rgba(0, 0, 0, .14); }
 
-    /* Janela de terminal (estilo Windows Terminal, já que a instalação é no PowerShell) */
-    .terminal { border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; background: var(--term); box-shadow: 0 24px 60px rgba(0, 0, 0, .28); }
-    .term-bar { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; height: 44px; padding: 0 8px; border-bottom: 1px solid var(--line); background: #1b1b18; }
-    .term-tab { display: inline-flex; align-items: center; gap: 9px; height: 34px; margin-bottom: -1px; padding: 0 18px 0 10px; border: 1px solid var(--line); border-bottom: 0; border-radius: 8px 8px 0 0; color: var(--ink-2); background: var(--term); font: 500 12.5px var(--sans); }
-    .term-icon { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 4px; color: var(--green); background: var(--green-soft); font: 500 8.5px var(--mono); }
-    .copy-btn { align-self: center; display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 10px; border: 1px solid var(--line); border-radius: 7px; color: var(--muted); background: transparent; font: 400 12px var(--mono); cursor: pointer; transition: color .2s, border-color .2s, background-color .2s; }
-    .copy-btn svg { width: 13px; height: 13px; flex: none; }
-    .copy-btn:hover { color: var(--ink); border-color: var(--line-strong); background: rgba(255, 255, 255, .04); }
-    .copy-btn.is-copied { color: var(--green); border-color: rgba(183, 200, 170, .45); }
-    .term-body { padding: 20px 22px 24px; color: #a9a69d; font: 400 12.5px/1.85 var(--mono); }
-    .ln { display: flex; gap: 1ch; }
-    .ln.c { color: var(--muted-2); }
-    .ln:not(.c) + .ln.c { margin-top: 1.1em; }
-    .prompt { flex: none; color: var(--muted-2); -webkit-user-select: none; user-select: none; }
-    .ln code { min-width: 0; color: var(--green); font: inherit; overflow-wrap: anywhere; }
+    /* Captura do app */
+    .app-shot { display: block; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 12px; background: #15141a; box-shadow: 0 24px 60px rgba(0, 0, 0, .32); text-decoration: none; transition: border-color .2s, transform .3s var(--ease); }
+    .app-shot:hover { border-color: rgba(231, 127, 179, .5); transform: translateY(-2px); }
+    .app-shot img { width: 100%; height: auto; }
+    .app-bar { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-bottom: 1px solid var(--line); background: #1c1b22; }
+    .app-bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a3946; }
+    .app-bar span { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; color: #a3a1b2; font: 500 11.5px var(--sans); }
+    .get { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+    .get a { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: rgba(255, 255, 255, .025); text-decoration: none; font: 500 14px var(--sans); transition: border-color .2s; }
+    .get a:hover { border-color: var(--green); }
+    .get code { color: var(--muted-2); font-size: 12px; }
+    .facts code { color: var(--ink); font-size: .9em; }
 
     /* Projetos */
     .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -198,6 +195,8 @@
     .language.ts::before { background: #3178c6; }
     .language.ps::before { background: #5391fe; }
     .language.py::before { background: #ffdf66; }
+    .language.js::before { background: #f1e05a; }
+    .language.bin::before { background: var(--muted-2); }
     .card-foot .arrow { color: var(--green); font: 16px var(--mono); }
     @media (hover: hover) {
       .project-card:hover { border-color: var(--line-strong); background-color: var(--surface-hover); }
@@ -252,7 +251,7 @@
       .project-card { min-height: 0; padding: 24px; }
       .card-top { margin-bottom: 28px; }
       .facts div { grid-template-columns: 92px 1fr; gap: 12px; }
-      .term-body { padding: 18px 16px 20px; font-size: 12px; }
+      .get { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; align-items: flex-start; justify-content: center; gap: 14px; padding: 26px 0; }
     }
 
@@ -273,7 +272,7 @@
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menu"><span></span><span></span></button>
       <div class="nav-links" id="nav-links">
-        <a href="#siliconflower">SiliconFlower</a>
+        <a href="#siliconflower">Siliconflower</a>
         <a href="#projetos">Projetos</a>
         <a href="llm-imprensa.html">Estudo</a>
         <a class="nav-cta" href="https://github.com/1155dosilicon" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
@@ -292,7 +291,7 @@
           <span class="h1-line">Software rápido.</span>
           <span class="h1-term"><span class="type">Controle total.</span></span>
         </h1>
-        <p class="hero-copy">Agentes de IA e ferramentas de terminal para Windows e Linux, escritos em TypeScript, PowerShell e Python. Todo o código está no GitHub.</p>
+        <p class="hero-copy">Agentes de IA, ferramentas de terminal e extensões para Windows e Linux, escritos em TypeScript, JavaScript, PowerShell e Python. Todo o código está no GitHub.</p>
         <div class="actions">
           <a class="button primary" href="#siliconflower">Ver projetos <span class="arrow down" aria-hidden="true">↓</span></a>
           <a class="button secondary" href="https://github.com/1155dosilicon" target="_blank" rel="noopener">github.com/1155dosilicon <span class="arrow out" aria-hidden="true">↗</span></a>
@@ -302,10 +301,10 @@
 
     <div class="status">
       <div class="status-grid shell">
-        <a class="status-item" href="https://github.com/1155dosilicon/siliconflower/releases" target="_blank" rel="noopener"><span class="status-name">siliconflower</span><strong class="status-value">v0.2.9</strong><span class="arrow out" aria-hidden="true">↗</span></a>
-        <a class="status-item" href="https://github.com/1155dosilicon/markiidown/releases" target="_blank" rel="noopener"><span class="status-name">markiidown</span><strong class="status-value">v1.1.0</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon/siliconflower/releases" target="_blank" rel="noopener"><span class="status-name">siliconflower</span><strong class="status-value" data-gh-release="1155dosilicon/siliconflower">v0.9.1</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon/markiidown/releases" target="_blank" rel="noopener"><span class="status-name">markiidown</span><strong class="status-value" data-gh-release="1155dosilicon/markiidown">v1.1.0</strong><span class="arrow out" aria-hidden="true">↗</span></a>
         <a class="status-item" href="https://github.com/1155dosilicon/otimizador-windows" target="_blank" rel="noopener"><span class="status-name">otimizador-windows</span><strong class="status-value">v3.3</strong><span class="arrow out" aria-hidden="true">↗</span></a>
-        <a class="status-item" href="https://github.com/1155dosilicon?tab=repositories" target="_blank" rel="noopener"><span class="status-name">repositórios públicos</span><strong class="status-value">7</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon?tab=repositories" target="_blank" rel="noopener"><span class="status-name">repositórios públicos</span><strong class="status-value" data-gh-repos="1155dosilicon">9</strong><span class="arrow out" aria-hidden="true">↗</span></a>
       </div>
     </div>
 
@@ -313,50 +312,41 @@
       <header class="section-head">
         <div>
           <p class="kicker"># projeto principal</p>
-          <h2>Um agente de engenharia no terminal.</h2>
+          <h2>Um agente de IA que programa com você.</h2>
         </div>
-        <p class="lead">CLI/TUI que lê o repositório, edita arquivos, roda comandos e delega tarefas a subagentes, com cada ação visível na tela.</p>
+        <p class="lead">App de desktop para Windows e Linux que lê o repositório, edita arquivos, roda comandos e delega tarefas a subagentes, com cada ação visível na tela.</p>
       </header>
 
       <article class="featured">
         <div class="featured-copy">
-          <p class="featured-meta"><b>siliconflower</b> v0.2.9 · licença MIT</p>
-          <h3>IA agêntica,<br>direto no terminal.</h3>
+          <p class="featured-meta"><b>siliconflower</b> <span data-gh-release="1155dosilicon/siliconflower">v0.9.1</span> · licença MIT</p>
+          <h3>IA agêntica,<br>no seu computador.</h3>
           <dl class="facts">
-            <div><dt>ferramentas</dt><dd>34 nativas: arquivos, busca, comandos, web, memória e worktrees</dd></div>
+            <div><dt>interface</dt><dd>app de desktop (uma janela por projeto) ou no navegador com <code>siliconflower gui</code></dd></div>
+            <div><dt>ferramentas</dt><dd>30 nativas: arquivos, busca, comandos, web, memória e worktrees</dd></div>
             <div><dt>agentes</dt><dd>subagentes e tarefas em background</dd></div>
-            <div><dt>modelos</dt><dd>qualquer API compatível com OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo)</dd></div>
-            <div><dt>extensões</dt><dd>servidores MCP, hooks e skills em Markdown</dd></div>
-            <div><dt>plataforma</dt><dd>Windows · port para Linux/macOS em <a href="https://github.com/1155dosilicon/siliconflower-nix" target="_blank" rel="noopener">siliconflower-nix</a></dd></div>
+            <div><dt>modelos</dt><dd>qualquer API compatível com a da OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo)</dd></div>
+            <div><dt>extensões</dt><dd>servidores MCP (stdio ou HTTP), hooks e skills em Markdown</dd></div>
+            <div><dt>plataforma</dt><dd>Windows 10/11 e Linux x86_64 (<code>.exe</code>, <code>.deb</code> e AppImage)</dd></div>
           </dl>
           <div class="actions">
-            <a class="button primary" href="siliconflower.html">Ver apresentação <span class="arrow right" aria-hidden="true">→</span></a>
+            <a class="button primary" href="siliconflower/">Conhecer e baixar <span class="arrow right" aria-hidden="true">→</span></a>
             <a class="button secondary" href="https://github.com/1155dosilicon/siliconflower" target="_blank" rel="noopener">Repositório <span class="arrow out" aria-hidden="true">↗</span></a>
           </div>
         </div>
 
         <div class="featured-panel">
-          <figure class="terminal">
-            <div class="term-bar">
-              <span class="term-tab"><span class="term-icon" aria-hidden="true">&gt;_</span>PowerShell</span>
-              <button class="copy-btn" type="button" title="Copiar comandos de instalação" data-copy="git clone https://github.com/1155dosilicon/siliconflower.git&#10;cd siliconflower&#10;bun install&#10;bun run start">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 5.5v-2A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"/></svg>
-                <span class="copy-label">copiar</span>
-              </button>
-            </div>
-            <div class="term-body">
-              <div class="ln c"># clone e instale</div>
-              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>git clone https://github.com/1155dosilicon/siliconflower.git</code></div>
-              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>cd siliconflower</code></div>
-              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>bun install</code></div>
-              <div class="ln c"># wizard de configuração na 1ª execução</div>
-              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>bun run start</code></div>
-              <div class="ln c"># ativa a memória de projeto na pasta atual</div>
-              <div class="ln"><span class="prompt" aria-hidden="true">PS&gt;</span><code>siliconflower init</code></div>
-            </div>
-            <figcaption class="sr-only">Instalação do SiliconFlower no PowerShell</figcaption>
-          </figure>
-          <p class="sr-only" id="copy-status" role="status" aria-live="polite"></p>
+          <a class="app-shot" href="siliconflower/" aria-label="Abrir a página do Siliconflower">
+            <span class="app-bar" aria-hidden="true"><i></i><i></i><i></i><span><svg viewBox="0 0 32 32" width="13" height="13"><g fill="#e77fb3"><circle cx="16" cy="7" r="6"/><circle cx="25" cy="13" r="6"/><circle cx="21" cy="24" r="6"/><circle cx="11" cy="24" r="6"/><circle cx="7" cy="13" r="6"/><circle cx="16" cy="16" r="8"/></g><circle cx="16" cy="16" r="4" fill="#f7d774"/></svg>Siliconflower</span></span>
+            <picture>
+              <source srcset="siliconflower/tela-conversa.webp" type="image/webp">
+              <img src="siliconflower/tela-conversa.png" width="1346" height="714" loading="lazy" alt="Janela do app Siliconflower com a lista de conversas e a caixa de mensagem">
+            </picture>
+          </a>
+          <div class="get">
+            <a href="siliconflower/#download"><span>Windows</span><code>.exe</code></a>
+            <a href="siliconflower/#download"><span>Linux</span><code>.deb · AppImage</code></a>
+          </div>
         </div>
       </article>
     </section>
@@ -367,17 +357,10 @@
           <p class="kicker"># repositórios</p>
           <h2>Outros projetos.</h2>
         </div>
-        <p class="lead">Ferramentas pequenas, cada uma resolvendo um problema específico.</p>
+        <p class="lead">Ferramentas pequenas, cada uma resolvendo um problema específico, do terminal ao painel do GNOME.</p>
       </header>
 
       <div class="project-grid">
-        <a class="project-card" href="https://github.com/1155dosilicon/siliconflower-nix" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-slug">siliconflower-nix</span><span class="card-state">v0.2.6</span></div>
-          <h3>SiliconFlower para Linux/macOS</h3>
-          <p>Port multiplataforma do SiliconFlower. Mesmas ferramentas e TUI, com build nativo para Linux e macOS além do Windows.</p>
-          <div class="card-foot"><span class="language ts">TypeScript</span><span class="arrow out" aria-hidden="true">↗</span></div>
-        </a>
-
         <a class="project-card" href="https://github.com/1155dosilicon/markiidown" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-slug">markiidown</span><span class="card-state">v1.1.0</span></div>
           <h3>MarkiiDown</h3>
@@ -390,6 +373,27 @@
           <h3>Otimizador Windows</h3>
           <p>19 ajustes pós-instalação de desempenho e privacidade para Windows 10/11, como script .ps1 ou .exe.</p>
           <div class="card-foot"><span class="language ps">PowerShell</span><span class="arrow out" aria-hidden="true">↗</span></div>
+        </a>
+
+        <a class="project-card" href="https://github.com/1155dosilicon/cpu-monitor-gnome" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">cpu-monitor-gnome</span><span class="card-state">GNOME 46</span></div>
+          <h3>CPU Monitor</h3>
+          <p>Extensão do GNOME Shell com um cilindro de uso no painel. Ao clicar: frequência, temperatura por núcleo, carga e os 5 processos que mais usam CPU.</p>
+          <div class="card-foot"><span class="language js">JavaScript</span><span class="arrow out" aria-hidden="true">↗</span></div>
+        </a>
+
+        <a class="project-card" href="https://github.com/1155dosilicon/gpu-monitor-gnome" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">gpu-monitor-gnome</span><span class="card-state">GNOME 46</span></div>
+          <h3>GPU Monitor (AMD)</h3>
+          <p>Uso exato de GPUs AMD via DRM fdinfo no painel do GNOME, com VRAM, temperatura, clocks, ventoinha e energia.</p>
+          <div class="card-foot"><span class="language js">JavaScript</span><span class="arrow out" aria-hidden="true">↗</span></div>
+        </a>
+
+        <a class="project-card" href="https://github.com/1155dosilicon/radeon-e9173" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">radeon-e9173</span><span class="card-state">ROM</span></div>
+          <h3>Radeon E9173</h3>
+          <p>VBIOS da Radeon E9173 low profile (Lexa), com a versão original e uma com overclock.</p>
+          <div class="card-foot"><span class="language bin">BIOS · .rom</span><span class="arrow out" aria-hidden="true">↗</span></div>
         </a>
 
         <a class="project-card is-archived" href="llm-imprensa.html">
@@ -466,37 +470,22 @@
         sectionLinks.forEach((link, section) => spy.observe(section));
       }
 
-      // Copiar comandos de instalação
-      const copyButton = document.querySelector('.copy-btn');
-      const copyLabel = copyButton.querySelector('.copy-label');
-      const copyStatus = document.getElementById('copy-status');
-      let copyTimer;
-      const fallbackCopy = text => {
-        const area = document.createElement('textarea');
-        area.value = text;
-        area.setAttribute('readonly', '');
-        area.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
-        document.body.appendChild(area);
-        area.select();
-        let copied = false;
-        try { copied = document.execCommand('copy'); } catch (error) { copied = false; }
-        area.remove();
-        return copied;
-      };
-      copyButton.addEventListener('click', async () => {
-        const text = copyButton.dataset.copy;
-        let copied;
-        try { await navigator.clipboard.writeText(text); copied = true; }
-        catch (error) { copied = fallbackCopy(text); }
-        copyButton.classList.toggle('is-copied', copied);
-        copyLabel.textContent = copied ? 'copiado' : 'copie manualmente';
-        copyStatus.textContent = copied ? 'Comandos de instalação copiados.' : 'Não foi possível copiar. Selecione os comandos e copie manualmente.';
-        clearTimeout(copyTimer);
-        copyTimer = setTimeout(() => {
-          copyButton.classList.remove('is-copied');
-          copyLabel.textContent = 'copiar';
-          copyStatus.textContent = '';
-        }, 2200);
+      // Mantém versões e contagem de repositórios em dia com o GitHub.
+      // Se a API falhar (limite de requisições, offline), ficam os valores escritos no HTML.
+      const gh = path => fetch('https://api.github.com/' + path, { headers: { Accept: 'application/vnd.github+json' } })
+        .then(r => r.ok ? r.json() : Promise.reject(r.status));
+      const releases = new Set([...document.querySelectorAll('[data-gh-release]')].map(el => el.dataset.ghRelease));
+      releases.forEach(repo => {
+        gh('repos/' + repo + '/releases/latest').then(rel => {
+          const m = String(rel.tag_name || '').match(/^v?(\d+(?:\.\d+)+)/);
+          if (!m) return;
+          document.querySelectorAll('[data-gh-release="' + repo + '"]').forEach(el => { el.textContent = 'v' + m[1]; });
+        }).catch(() => {});
+      });
+      document.querySelectorAll('[data-gh-repos]').forEach(el => {
+        gh('users/' + el.dataset.ghRepos).then(user => {
+          if (Number.isInteger(user.public_repos)) el.textContent = String(user.public_repos);
+        }).catch(() => {});
       });
     })();
   </script>
