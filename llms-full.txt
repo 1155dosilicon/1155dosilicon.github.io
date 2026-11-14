@@ -10,23 +10,25 @@ Site Oficial: https://1155dosilicon.github.io/
 ## 🌸 1. Siliconflower — Agente de IA para programar (1º Destaque)
 
 ### 1.1 Visão Geral
-O **Siliconflower** (v0.9.1, MIT) é um agente de IA para desenvolvimento de software em **Windows 10/11 e Linux x86_64**, usado como **app de desktop** (Electron, uma janela por projeto) ou como **interface no navegador** (`siliconflower gui`). É escrito em TypeScript e compilado com o Bun em binário único; o app já traz o agente, sem precisar de Node.js nem Bun.
+O **Siliconflower** (v0.14.0, MIT) é um agente de IA para desenvolvimento de software em **Windows 10/11 e Linux x86_64**, usado como **app de desktop** (Electron, uma janela por projeto) ou como **interface no navegador** (`siliconflower gui`). É escrito em TypeScript e compilado com o Bun em binário único; o app já traz o agente, sem precisar de Node.js nem Bun.
 
 - Página: https://1155dosilicon.github.io/siliconflower/
 - Código: https://github.com/1155dosilicon/siliconflower
-- Downloads: https://github.com/1155dosilicon/siliconflower/releases/latest (`Siliconflower-Setup-<versão>.exe`, `siliconflower.exe`, `Siliconflower-<versão>-amd64.deb`, `Siliconflower-<versão>-x86_64.AppImage`, `install-appimage.sh`, `siliconflower-linux-x64`)
+- Downloads: https://github.com/1155dosilicon/siliconflower/releases/latest (`Siliconflower-Setup-<versão>.exe`, `siliconflower-portatil-windows-x64.exe`, `Siliconflower-<versão>-amd64.deb`, `Siliconflower-<versão>-x86_64.AppImage`, `install-appimage.sh`, `siliconflower-portatil-linux-x64`). O instalador, o .deb e o AppImage são o app de desktop; os arquivos `portatil` são só o agente, sem instalar.
 - Desde a 0.9.0 não há suporte a macOS nem a ARM.
 
 ### 1.2 Principais Capacidades
 1. **App de desktop e navegador:** configuração sem terminal (provedor, chave, modelo e "Testar conexão"), conversas salvas por projeto, busca e renomeação de conversas, editar e reenviar a última mensagem.
 2. **Subagentes e tarefas em background:** papéis `general`, `research`, `verification`, `plan`, `coder` ou `custom`; `research` e `plan` só leem. Tarefas em background aparecem na barra lateral e podem ser encerradas.
 3. **Projetos e memória:** uma pasta com `SILICONFLOWER.md` ou `AGENTS.md` vira projeto e liga a memória de projeto, guardada em `~/.siliconflower/workspaces/<workspace-id>/`, fora do repositório.
-4. **Modos e raciocínio:** modos `programação`, `sistema` e `plano` (somente leitura); nível de pensamento `none`, `low`, `medium`, `high`.
+4. **Modos e raciocínio:** modos `programação` (mostrado como **ultracódigo** na interface), `sistema` e `plano` (somente leitura); nível de pensamento `none`, `low`, `medium`, `high`, `max`, `ultra` (se o provedor recusar os dois últimos, segue com `high`).
 5. **Git worktrees** em `<repo>/.worktrees/<branch>` e **RepoMap** (TS, JS, Python, Go, Rust).
 6. **MCP, hooks e skills:** servidores MCP por stdio (`command`) ou HTTP (`url` + `headers`); hooks `preTool`, `postTool`, `onEdit`, `onCommand`, `onSessionStart`, `onSessionEnd`; skills em Markdown em `~/.siliconflower/skills/`.
 7. **Anexos:** imagens em qualquer provedor; áudio e vídeo na API Xiaomi MiMo; até 4 arquivos e 10 MB por mensagem.
 8. **Multi-provedor:** qualquer API compatível com a da OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo). `contextTokens` define o orçamento de contexto (padrão 90 mil).
 9. **Segurança:** sem sandbox; comandos rodam com os privilégios do usuário. Um `hooks.json` dentro do repositório não roda. Credenciais são mascaradas no log.
+10. **Diagnóstico:** o botão 🩺 (na tela inicial do app; no navegador, no topo) confere configuração, provedor, servidores MCP, shell, git, pasta de dados, hooks, conversas salvas e erros do log, e diz como resolver; `siliconflower doctor` (`--fix`, `--offline`, `--json`, `--projects`) faz o mesmo no terminal.
+11. **Tarefas longas:** sem limite de passos por mensagem; a cada `askAfterSteps` passos (padrão 150) a interface pergunta se continua, chamadas idênticas repetidas geram aviso ao modelo e conexões perdidas são repetidas automaticamente.
 
 ### 1.3 Ferramentas Nativas (30)
 - Arquivos (10): `read_file`, `read_media`, `write_file`, `edit_file`, `apply_patch`, `list_directory`, `create_directory`, `move_path`, `delete_path`, `file_info`.
@@ -37,7 +39,7 @@ O **Siliconflower** (v0.9.1, MIT) é um agente de IA para desenvolvimento de sof
 - Artefatos e web (4): `artifact`, `web_fetch`, `web_search`, `show_hooks`.
 
 ### 1.4 Comandos
-`siliconflower gui`, `config`, `show`, `init` (`--agents`), `ensure`, `skills list|sync`, `logs`. Opções globais: `-m/--model`, `-r/--reasoning`, `--mode`, `--base-url`, `--api-key`.
+`siliconflower gui`, `config`, `show`, `doctor` (`--fix`, `--offline`, `--json`), `init` (`--agents`), `ensure`, `skills list|sync`, `logs`. Opções globais: `-m/--model`, `-r/--reasoning`, `--mode`, `--base-url`, `--api-key`.
 
 ---
 
