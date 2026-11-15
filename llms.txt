@@ -11,6 +11,8 @@
 
 ## Utilitários & Ferramentas Open Source
 
+- [AeroTop](https://1155dosilicon.github.io/aerotop/): Monitor do sistema para o terminal em Rust (v0.1.0), com visual Frutiger Aero / Windows 7: medidores de CPU por núcleo, RAM, zram, GPU AMD (uso, VRAM, temperatura, clocks, energia) e lista de processos com busca, encerrar e prioridade. Binário único < 1 MB, < 1,5% de CPU. Código: https://github.com/1155dosilicon/aerotop
+- [Monitores de CPU e GPU para Windows](https://github.com/1155dosilicon/cpu-gpu-monitor-windows): Dois programas em C puro/Win32 (~170 KB cada, v1.0.0) que mostram na bandeja do Windows o uso de CPU e de GPUs AMD, com temperatura, clocks, energia e VRAM.
 - [CPU Monitor para GNOME](https://github.com/1155dosilicon/cpu-monitor-gnome): Extensão do GNOME Shell 46 com cilindro de uso da CPU no painel, frequência, temperatura, carga e top-5 processos.
 - [GPU Monitor (AMD) para GNOME](https://github.com/1155dosilicon/gpu-monitor-gnome): Extensão do GNOME Shell 46 com uso exato de GPUs AMD (amdgpu, via DRM fdinfo), VRAM, temperatura, clocks, ventoinha e energia.
 - [Radeon E9173](https://github.com/1155dosilicon/radeon-e9173): VBIOS (ROM) da Radeon E9173 low profile, original e com overclock.
