@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Siliconflower — Agente de IA que programa com você</title>
-  <meta name="description" content="Siliconflower é um agente de IA open source para programar no Windows e no Linux: app de desktop, 30 ferramentas nativas, subagentes, memória por projeto, diagnóstico embutido, MCP e qualquer API compatível com a da OpenAI.">
+  <meta name="description" content="Siliconflower é um agente de IA open source para programar no Windows e no Linux: app de desktop, 30 ferramentas nativas, subagentes, memória por projeto, diagnóstico embutido, MCP (inclusive como servidor para o Claude Code) e qualquer API compatível com a da OpenAI.">
   <meta name="author" content="1155dosilicon">
   <meta name="theme-color" content="#15141a">
   <meta name="color-scheme" content="dark">
@@ -22,20 +22,20 @@
   <meta property="og:title" content="Siliconflower — Agente de IA que programa com você">
   <meta property="og:description" content="App de desktop para Windows e Linux. 30 ferramentas, subagentes, memória por projeto e MCP. Grátis e open source.">
   <meta property="og:url" content="https://1155dosilicon.github.io/siliconflower/">
-  <meta property="og:image" content="https://1155dosilicon.github.io/siliconflower/og.png?v=0.14.0">
+  <meta property="og:image" content="https://1155dosilicon.github.io/siliconflower/og.png?v=0.15.0">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Siliconflower: logo da flor rosa ao lado da janela do app">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Siliconflower — Agente de IA que programa com você">
   <meta name="twitter:description" content="App de desktop para Windows e Linux. 30 ferramentas, subagentes, memória por projeto e MCP. Grátis e open source.">
-  <meta name="twitter:image" content="https://1155dosilicon.github.io/siliconflower/og.png?v=0.14.0">
+  <meta name="twitter:image" content="https://1155dosilicon.github.io/siliconflower/og.png?v=0.15.0">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Siliconflower",
-    "softwareVersion": "0.14.0",
+    "softwareVersion": "0.15.0",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Windows 10, Windows 11, Linux x86_64",
     "description": "Agente de IA para desenvolvimento de software em Windows e Linux, como app de desktop ou interface no navegador, com 30 ferramentas nativas, subagentes, memória por projeto, Git worktrees, RepoMap e MCP.",
@@ -296,7 +296,7 @@
       <a class="brand" href="#top" aria-label="Siliconflower — início">
         <svg class="flower" width="28" height="28" aria-hidden="true"><use href="#flower"/></svg>
         Siliconflower
-        <span class="version" data-sf-version>v0.14.0</span>
+        <span class="version" data-sf-version>v0.15.0</span>
       </a>
       <div class="nav-links">
         <a href="#recursos">Recursos</a>
@@ -312,7 +312,7 @@
     <section class="hero" id="top">
       <div class="wrap">
         <svg class="flower" width="76" height="76" aria-hidden="true"><use href="#flower"/></svg>
-        <a class="pill" href="#novidades"><b>novo</b> <span data-sf-version-long>Versão 0.14.0</span> · veja as novidades →</a>
+        <a class="pill" href="#novidades"><b>novo</b> <span data-sf-version-long>Versão 0.15.0</span> · veja as novidades →</a>
         <h1>Um agente de IA que <em>programa com você.</em></h1>
         <p class="hero-copy">O Siliconflower lê o seu projeto, edita arquivos, roda comandos e delega tarefas a subagentes, tudo num app de desktop para Windows e Linux. Você escolhe o modelo e vê cada passo na tela.</p>
         <div class="actions">
@@ -378,7 +378,7 @@
           <article class="feature">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v4M15 3v4M7 7h10v4a5 5 0 0 1-10 0zM12 16v5"/></svg></div>
             <h3>MCP, hooks e skills</h3>
-            <p>Servidores MCP por stdio ou HTTP, comandos disparados por eventos e instruções em Markdown carregadas quando fazem sentido.</p>
+            <p>Servidores MCP por stdio ou HTTP, comandos disparados por eventos e instruções em Markdown carregadas quando fazem sentido. E ao contrário: com <code>siliconflower mcp</code>, o Claude Code passa tarefas para ele.</p>
           </article>
           <article class="feature">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 11-8.5 8.5a5 5 0 0 1-7-7L13 4a3.3 3.3 0 0 1 4.7 4.7l-8.5 8.5a1.7 1.7 0 0 1-2.4-2.4L14.5 7"/></svg></div>
@@ -465,6 +465,27 @@
         </header>
         <ol class="releases">
           <li class="release latest">
+            <div class="rel-meta"><a href="https://github.com/1155dosilicon/siliconflower/releases/tag/v0.15.0" target="_blank" rel="noopener">v0.15.0</a><time datetime="2026-11-16">16 nov 2026</time></div>
+            <div>
+              <h3>🤝 Conversa com o seu Claude Code</h3>
+              <ul>
+                <li><code>siliconflower mcp</code>: o Siliconflower vira um servidor MCP, e o Claude Code (ou outro cliente) pode passar tarefas para ele.</li>
+                <li><code>siliconflower run "mensagem"</code>: uma resposta do agente direto no terminal, sem abrir janela, com <code>--json</code> para scripts.</li>
+                <li>As conversas feitas pelo terminal ou pelo MCP são as mesmas do app e podem ser continuadas.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="release">
+            <div class="rel-meta"><a href="https://github.com/1155dosilicon/siliconflower/releases/tag/v0.14.1" target="_blank" rel="noopener">v0.14.1</a><time datetime="2026-11-15">15 nov 2026</time></div>
+            <div>
+              <h3>Chave de API protegida</h3>
+              <ul>
+                <li>O modelo não consegue mais ler a sua chave de API, nem por arquivo, nem por variável de ambiente.</li>
+                <li>Chaves e headers aparecem como <code>***</code> nos resultados das ferramentas.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="release">
             <div class="rel-meta"><a href="https://github.com/1155dosilicon/siliconflower/releases/tag/v0.14.0" target="_blank" rel="noopener">v0.14.0</a><time datetime="2026-11-14">14 nov 2026</time></div>
             <div>
               <h3>Sem loops, sem quedas</h3>
@@ -486,27 +507,6 @@
               </ul>
             </div>
           </li>
-          <li class="release">
-            <div class="rel-meta"><a href="https://github.com/1155dosilicon/siliconflower/releases/tag/v0.12.0" target="_blank" rel="noopener">v0.12.0</a><time datetime="2026-11-13">13 nov 2026</time></div>
-            <div>
-              <h3>🩺 Diagnóstico</h3>
-              <ul>
-                <li>Confere configuração, provedor, MCP, shell, git, hooks e conversas, com <b>Corrigir o que der</b>.</li>
-                <li>Fim do limite de 50 passos por mensagem.</li>
-              </ul>
-            </div>
-          </li>
-          <li class="release">
-            <div class="rel-meta"><a href="https://github.com/1155dosilicon/siliconflower/releases/tag/v0.11.0" target="_blank" rel="noopener">v0.11.0</a><time datetime="2026-11-13">13 nov 2026</time></div>
-            <div>
-              <h3>Pensamento max e ultra</h3>
-              <ul>
-                <li>Novos níveis de pensamento; se o provedor recusar, o pedido segue com <code>high</code>.</li>
-                <li>A configuração não vem mais com um provedor pré-escolhido.</li>
-                <li>Agente portátil com nome próprio, para não confundir com o instalador.</li>
-              </ul>
-            </div>
-          </li>
         </ol>
       </div>
     </section>
@@ -514,7 +514,7 @@
     <section class="section" id="download">
       <div class="wrap">
         <header class="head center">
-          <p class="kicker">download · <span data-sf-version>v0.14.0</span></p>
+          <p class="kicker">download · <span data-sf-version>v0.15.0</span></p>
           <h2>Baixe e comece agora.</h2>
           <p class="lead">Grátis e de código aberto. O app já traz o agente, sem precisar de Node.js nem Bun. O agente portátil é só o binário: <code>siliconflower gui</code> abre a interface no navegador.</p>
         </header>
@@ -523,9 +523,9 @@
           <article class="dl">
             <div class="dl-head"><svg aria-hidden="true"><use href="#i-win"/></svg><h3>Windows</h3></div>
             <p>Windows 10 ou 11 (x64). Não pede administrador. <b>Se não sabe qual baixar, é o instalador.</b></p>
-            <a class="btn primary" data-asset="^Siliconflower-Setup-.*\.exe$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.14.0/Siliconflower-Setup-0.14.0.exe"><span>Baixar instalador</span><small>.exe</small></a>
+            <a class="btn primary" data-asset="^Siliconflower-Setup-.*\.exe$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.15.0/Siliconflower-Setup-0.15.0.exe"><span>Baixar instalador</span><small>.exe</small></a>
             <div class="dl-more">
-              <a data-asset="^siliconflower-portatil-windows-x64\.exe$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.14.0/siliconflower-portatil-windows-x64.exe"><span>Agente portátil, sem instalar</span><span>portatil-windows-x64.exe</span></a>
+              <a data-asset="^siliconflower-portatil-windows-x64\.exe$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.15.0/siliconflower-portatil-windows-x64.exe"><span>Agente portátil, sem instalar</span><span>portatil-windows-x64.exe</span></a>
             </div>
             <p class="dl-note">O instalador não é assinado: se o SmartScreen avisar, clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>.</p>
           </article>
@@ -533,11 +533,11 @@
           <article class="dl">
             <div class="dl-head"><svg aria-hidden="true"><use href="#i-linux"/></svg><h3>Linux</h3></div>
             <p>x86_64 · Ubuntu 18.04, Debian 10, Fedora 28 ou mais novas.</p>
-            <a class="btn primary" data-asset="-amd64\.deb$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.14.0/Siliconflower-0.14.0-amd64.deb"><span>Baixar para Debian/Ubuntu</span><small>.deb</small></a>
+            <a class="btn primary" data-asset="-amd64\.deb$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.15.0/Siliconflower-0.15.0-amd64.deb"><span>Baixar para Debian/Ubuntu</span><small>.deb</small></a>
             <div class="dl-more">
-              <a data-asset="\.AppImage$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.14.0/Siliconflower-0.14.0-x86_64.AppImage"><span>Qualquer distribuição</span><span>.AppImage</span></a>
-              <a data-asset="^install-appimage\.sh$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.14.0/install-appimage.sh"><span>Instalar o AppImage sem senha</span><span>install-appimage.sh</span></a>
-              <a data-asset="^siliconflower-portatil-linux-x64$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.14.0/siliconflower-portatil-linux-x64"><span>Agente portátil, sem instalar</span><span>portatil-linux-x64</span></a>
+              <a data-asset="\.AppImage$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.15.0/Siliconflower-0.15.0-x86_64.AppImage"><span>Qualquer distribuição</span><span>.AppImage</span></a>
+              <a data-asset="^install-appimage\.sh$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.15.0/install-appimage.sh"><span>Instalar o AppImage sem senha</span><span>install-appimage.sh</span></a>
+              <a data-asset="^siliconflower-portatil-linux-x64$" href="https://github.com/1155dosilicon/siliconflower/releases/download/v0.15.0/siliconflower-portatil-linux-x64"><span>Agente portátil, sem instalar</span><span>portatil-linux-x64</span></a>
             </div>
             <p class="dl-note">No .deb: <code>sudo apt install ./Siliconflower-*-amd64.deb</code>. Não instale o pacote <code>fuse</code>; o .deb e o script não precisam dele.</p>
           </article>
