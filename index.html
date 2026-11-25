@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>1155DOSILICON — Agentes de IA e ferramentas open source</title>
-  <meta name="description" content="Projetos open source da 1155DOSILICON: Siliconflower (agente de IA para programar, no Windows e no Linux), MarkiiDown, Otimizador Windows, monitores de CPU e GPU para GNOME e estudos sobre LLMs.">
+  <meta name="description" content="Projetos open source da 1155DOSILICON: Siliconflower (agente de IA para programar, no Windows e no Linux), AeroTop, Roleta, Recorta, monitores de sistema para Windows, GNOME e LXDE, MarkiiDown, Otimizador Windows e estudos sobre LLMs.">
   <meta name="author" content="1155dosilicon">
   <meta name="theme-color" content="#151513">
   <meta name="color-scheme" content="dark">
@@ -32,7 +32,7 @@
     "url": "https://1155dosilicon.github.io/",
     "image": "https://1155dosilicon.github.io/og-cover.jpg",
     "sameAs": ["https://github.com/1155dosilicon", "https://youtube.com/@1155doSilicon"],
-    "knowsAbout": ["AI Agents", "Model Context Protocol", "TypeScript", "Bun", "Electron", "PowerShell", "GNOME Shell", "Windows", "Linux"]
+    "knowsAbout": ["AI Agents", "Model Context Protocol", "TypeScript", "Bun", "Electron", "Rust", "C", "Win32", "PowerShell", "GNOME Shell", "LXDE", "Windows", "Linux"]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -181,6 +181,7 @@
     .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .project-card { display: flex; flex-direction: column; min-height: 270px; padding: 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); text-decoration: none; transition: border-color .2s, background-color .2s; }
     .project-card.is-archived { border-style: dashed; border-color: var(--line-strong); background: transparent; }
+    .project-card.is-archived:last-child:nth-child(odd) { grid-column: 1 / -1; min-height: 0; }
     .card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 36px; font: 400 12.5px var(--mono); }
     .card-slug { color: var(--muted-2); }
     .card-state { display: inline-flex; align-items: center; gap: 8px; color: var(--green); }
@@ -293,7 +294,7 @@
           <span class="h1-line">Software rápido.</span>
           <span class="h1-term"><span class="type">Controle total.</span></span>
         </h1>
-        <p class="hero-copy">Agentes de IA, ferramentas de terminal e extensões para Windows e Linux, escritos em TypeScript, JavaScript, PowerShell e Python. Todo o código está no GitHub.</p>
+        <p class="hero-copy">Agentes de IA, ferramentas de terminal, utilitários de desktop e monitores de sistema para Windows e Linux, escritos em TypeScript, Rust, C, PowerShell e JavaScript. Todo o código está no GitHub.</p>
         <div class="actions">
           <a class="button primary" href="#siliconflower">Ver projetos <span class="arrow down" aria-hidden="true">↓</span></a>
           <a class="button secondary" href="https://github.com/1155dosilicon" target="_blank" rel="noopener">github.com/1155dosilicon <span class="arrow out" aria-hidden="true">↗</span></a>
@@ -303,10 +304,10 @@
 
     <div class="status">
       <div class="status-grid shell">
-        <a class="status-item" href="https://github.com/1155dosilicon/siliconflower/releases" target="_blank" rel="noopener"><span class="status-name">siliconflower</span><strong class="status-value" data-gh-release="1155dosilicon/siliconflower">v0.15.0</strong><span class="arrow out" aria-hidden="true">↗</span></a>
-        <a class="status-item" href="https://github.com/1155dosilicon/markiidown/releases" target="_blank" rel="noopener"><span class="status-name">markiidown</span><strong class="status-value" data-gh-release="1155dosilicon/markiidown">v1.1.0</strong><span class="arrow out" aria-hidden="true">↗</span></a>
-        <a class="status-item" href="https://github.com/1155dosilicon/otimizador-windows" target="_blank" rel="noopener"><span class="status-name">otimizador-windows</span><strong class="status-value">v3.3</strong><span class="arrow out" aria-hidden="true">↗</span></a>
-        <a class="status-item" href="https://github.com/1155dosilicon?tab=repositories" target="_blank" rel="noopener"><span class="status-name">repositórios públicos</span><strong class="status-value" data-gh-repos="1155dosilicon">11</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon/siliconflower/releases" target="_blank" rel="noopener"><span class="status-name">siliconflower</span><strong class="status-value" data-gh-release="1155dosilicon/siliconflower">v0.18.1</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon/markiidown/releases" target="_blank" rel="noopener"><span class="status-name">markiidown</span><strong class="status-value" data-gh-release="1155dosilicon/markiidown">v2.1.0</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon/otimizador-windows/releases" target="_blank" rel="noopener"><span class="status-name">otimizador-windows</span><strong class="status-value" data-gh-release="1155dosilicon/otimizador-windows">v3.4.1</strong><span class="arrow out" aria-hidden="true">↗</span></a>
+        <a class="status-item" href="https://github.com/1155dosilicon?tab=repositories" target="_blank" rel="noopener"><span class="status-name">repositórios públicos</span><strong class="status-value" data-gh-repos="1155dosilicon">17</strong><span class="arrow out" aria-hidden="true">↗</span></a>
       </div>
     </div>
 
@@ -321,14 +322,14 @@
 
       <article class="featured">
         <div class="featured-copy">
-          <p class="featured-meta"><b>siliconflower</b> <span data-gh-release="1155dosilicon/siliconflower">v0.15.0</span> · licença MIT</p>
+          <p class="featured-meta"><b>siliconflower</b> <span data-gh-release="1155dosilicon/siliconflower">v0.18.1</span> · licença MIT</p>
           <h3>IA agêntica,<br>no seu computador.</h3>
           <dl class="facts">
             <div><dt>interface</dt><dd>app de desktop (uma janela por projeto) ou no navegador com <code>siliconflower gui</code></dd></div>
             <div><dt>ferramentas</dt><dd>30 nativas: arquivos, busca, comandos, web, memória e worktrees</dd></div>
-            <div><dt>agentes</dt><dd>subagentes e tarefas em background, com diagnóstico embutido (🩺)</dd></div>
-            <div><dt>modelos</dt><dd>qualquer API compatível com a da OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo)</dd></div>
-            <div><dt>extensões</dt><dd>servidores MCP (stdio ou HTTP), hooks e skills em Markdown; também vira servidor MCP para o Claude Code (<code>siliconflower mcp</code>)</dd></div>
+            <div><dt>agentes</dt><dd>subagentes, tarefas em background, orçamentos de turno e diagnóstico embutido (🩺)</dd></div>
+            <div><dt>modelos</dt><dd>suporte de primeira classe ao DeepSeek e qualquer API compatível com a da OpenAI (SiliconFlow, OpenRouter, OpenAI, Xiaomi MiMo)</dd></div>
+            <div><dt>extensões</dt><dd>servidores MCP (stdio ou HTTP), hooks e skills em Markdown; vira servidor MCP para o Claude Code (<code>siliconflower mcp</code>) e roda no terminal (<code>siliconflower run</code>)</dd></div>
             <div><dt>plataforma</dt><dd>Windows 10/11 e Linux x86_64 (<code>.exe</code>, <code>.deb</code> e AppImage)</dd></div>
           </dl>
           <div class="actions">
@@ -359,36 +360,64 @@
           <p class="kicker"># repositórios</p>
           <h2>Outros projetos.</h2>
         </div>
-        <p class="lead">Ferramentas pequenas, cada uma resolvendo um problema específico, do terminal ao painel do GNOME.</p>
+        <p class="lead">Ferramentas pequenas, cada uma resolvendo um problema específico, do terminal à bandeja do Windows, GNOME e LXDE.</p>
       </header>
 
       <div class="project-grid">
+        <a class="project-card" href="https://github.com/1155dosilicon/windows-extensions" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">windows-extensions</span><span class="card-state" data-gh-release="1155dosilicon/windows-extensions">v1.2.1</span></div>
+          <h3>Monitores na bandeja do Windows</h3>
+          <p>Cinco monitores de CPU, GPU (AMD e NVIDIA), RAM, disco e rede na bandeja do Windows: uso, temperatura, clocks, energia, VRAM e tráfego. C puro, ~200 KB cada.</p>
+          <div class="card-foot"><span class="language c">C · Win32</span><span class="arrow out" aria-hidden="true">↗</span></div>
+        </a>
+
         <a class="project-card" href="https://1155dosilicon.github.io/aerotop/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-slug">aerotop</span><span class="card-state">v0.1.0</span></div>
+          <div class="card-top"><span class="card-slug">aerotop</span><span class="card-state" data-gh-release="1155dosilicon/aerotop">v0.1.8</span></div>
           <h3>AeroTop</h3>
           <p>Monitor do sistema no terminal com visual Frutiger Aero / Windows 7: CPU por núcleo, RAM, zram, GPU AMD e processos, gastando menos de 1,5% de CPU.</p>
           <div class="card-foot"><span class="language rs">Rust</span><span class="arrow out" aria-hidden="true">↗</span></div>
         </a>
 
-        <a class="project-card" href="https://github.com/1155dosilicon/cpu-gpu-monitor-windows" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-slug">cpu-gpu-monitor-windows</span><span class="card-state">v1.0.0</span></div>
-          <h3>CPU e GPU na bandeja</h3>
-          <p>Monitores de CPU e GPU AMD na bandeja do Windows: uso exato, temperatura, clocks, energia e VRAM. C puro, cerca de 170 KB cada.</p>
-          <div class="card-foot"><span class="language c">C · Win32</span><span class="arrow out" aria-hidden="true">↗</span></div>
+        <a class="project-card" href="https://github.com/1155dosilicon/roleta-rs" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">roleta-rs</span><span class="card-state" data-gh-release="1155dosilicon/roleta-rs">v0.2.4</span></div>
+          <h3>Roleta</h3>
+          <p>Menu radial para Windows e Linux (X11) acionado pelo botão lateral do mouse: abre programas, atalhos, comandos e textos num único executável.</p>
+          <div class="card-foot"><span class="language rs">Rust</span><span class="arrow out" aria-hidden="true">↗</span></div>
+        </a>
+
+        <a class="project-card" href="https://github.com/1155dosilicon/recorta" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">recorta</span><span class="card-state" data-gh-release="1155dosilicon/recorta">v0.2.3</span></div>
+          <h3>Recorta</h3>
+          <p>Editor de imagens portátil para Windows e Linux: recorta com proporções (4:3, 16:9, livre…), redimensiona livre e muda a escala com Lanczos ou pixel art (Scale2x/3x).</p>
+          <div class="card-foot"><span class="language rs">Rust</span><span class="arrow out" aria-hidden="true">↗</span></div>
         </a>
 
         <a class="project-card" href="https://github.com/1155dosilicon/markiidown" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-slug">markiidown</span><span class="card-state">v1.1.0</span></div>
+          <div class="card-top"><span class="card-slug">markiidown</span><span class="card-state" data-gh-release="1155dosilicon/markiidown">v2.1.0</span></div>
           <h3>MarkiiDown</h3>
           <p>Leitor e editor de Markdown e código no terminal, 100% offline. Realce de sintaxe, busca, sumário, exportação HTML e instalação no Windows sem administrador.</p>
           <div class="card-foot"><span class="language ts">TypeScript · Bun</span><span class="arrow out" aria-hidden="true">↗</span></div>
         </a>
 
         <a class="project-card" href="https://github.com/1155dosilicon/otimizador-windows" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-slug">otimizador-windows</span><span class="card-state">v3.3</span></div>
+          <div class="card-top"><span class="card-slug">otimizador-windows</span><span class="card-state" data-gh-release="1155dosilicon/otimizador-windows">v3.4.1</span></div>
           <h3>Otimizador Windows</h3>
           <p>19 ajustes pós-instalação de desempenho e privacidade para Windows 10/11, como script .ps1 ou .exe.</p>
           <div class="card-foot"><span class="language ps">PowerShell</span><span class="arrow out" aria-hidden="true">↗</span></div>
+        </a>
+
+        <a class="project-card" href="https://github.com/1155dosilicon/lxapplets" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">lxapplets</span><span class="card-state">LXDE</span></div>
+          <h3>lxapplets</h3>
+          <p>Applets de monitoramento para o lxpanel (LXDE): cilindros de vidro com líquido no painel para CPU, GPU, memória, disco e rede.</p>
+          <div class="card-foot"><span class="language rs">Rust · GTK3</span><span class="arrow out" aria-hidden="true">↗</span></div>
+        </a>
+
+        <a class="project-card" href="https://github.com/1155dosilicon/speedconquest" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">speedconquest</span><span class="card-state">Linux · Wine</span></div>
+          <h3>speedconquest</h3>
+          <p>42 conquistas offline estilo PS5 para Need for Speed Underground 2 no Wine (Linux): lê a memória do jogo, exibe popups no gamescope e lista em janela egui.</p>
+          <div class="card-foot"><span class="language rs">Rust</span><span class="arrow out" aria-hidden="true">↗</span></div>
         </a>
 
         <a class="project-card" href="https://github.com/1155dosilicon/cpu-monitor-gnome" target="_blank" rel="noopener">
@@ -403,6 +432,13 @@
           <h3>GPU Monitor (AMD)</h3>
           <p>Uso exato de GPUs AMD via DRM fdinfo no painel do GNOME, com VRAM, temperatura, clocks, ventoinha e energia.</p>
           <div class="card-foot"><span class="language js">JavaScript</span><span class="arrow out" aria-hidden="true">↗</span></div>
+        </a>
+
+        <a class="project-card" href="https://github.com/1155dosilicon/gtx550ti-4gb-vbios" target="_blank" rel="noopener">
+          <div class="card-top"><span class="card-slug">gtx550ti-4gb-vbios</span><span class="card-state">ROM</span></div>
+          <h3>GTX 550 Ti 4 GB</h3>
+          <p>Dump de VBIOS da GeForce GTX 550 Ti 4 GB chinesa (GF106, 70.26.41.00.00), com driver UEFI GOP para boot sem CSM.</p>
+          <div class="card-foot"><span class="language bin">BIOS · .rom</span><span class="arrow out" aria-hidden="true">↗</span></div>
         </a>
 
         <a class="project-card" href="https://github.com/1155dosilicon/radeon-e9173" target="_blank" rel="noopener">
